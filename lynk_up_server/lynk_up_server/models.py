@@ -21,6 +21,7 @@ class Friend(models.Model):
 
 
 class Group(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE)
   friends = models.ManyToManyField(Friend)
   name = models.CharField(max_length=40)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -37,6 +38,7 @@ class Event(models.Model):
   date = models.CharField(max_length=50)
   time = models.CharField(max_length=40)
   address = models.CharField(max_length=60)
+  description = models.CharField(max_length=200)
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)
