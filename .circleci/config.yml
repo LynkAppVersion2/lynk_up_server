@@ -21,11 +21,12 @@ jobs:
           command: |
             python -m venv venv
             . venv/bin/activate
-            pip install -r lynk_up_server/dependencies.txt
+            pip install -r lynk_up_serverdependencies.txt
       - run:
           name: "Run tests"
           command: |
             . venv/bin/activate
+            export DJANGO_SETTINGS_MODULE='lynk_up_server/lynk_up_server.settings'
             pytest
 
 workflows:
