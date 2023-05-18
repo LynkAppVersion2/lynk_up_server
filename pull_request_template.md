@@ -8,15 +8,15 @@ Link Issue Here
     [] Bug Fix
     [x] Refactor
 
-## Description of Change:
+## Description of Change
 
 Description...
     
-## Requested feedback: 
+## Requested feedback
 
 I'd like feedback on...
 
 
-## Additional Notes:
+## Additional Notes
 
 Notes...
