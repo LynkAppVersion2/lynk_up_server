@@ -28,7 +28,7 @@ jobs:
             . venv/bin/activate
             export DJANGO_SETTINGS_MODULE='lynk_up_server.lynk_up_server.settings'
             export PYTHONPATH="${PYTHONPATH}:$(pwd)"
-            pytest
+            pytest lynk_up_server/lynk_up_server/
 
 workflows:
   say-hello-workflow:
