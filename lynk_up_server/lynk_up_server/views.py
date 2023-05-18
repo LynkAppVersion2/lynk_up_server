@@ -22,5 +22,5 @@ def user_detail(request, phone_number):
 
   if request.method == 'GET':
     serializer = UserSerializer(user)
-    return Response(serializer.data)
+    return Response({"data": serializer.data})
 
