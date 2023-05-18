@@ -1,6 +1,6 @@
 ## Issue
 
-Issue...
+Link Issue Here
     
 ## Type of change
 
