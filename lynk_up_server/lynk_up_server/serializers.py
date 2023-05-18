@@ -27,3 +27,8 @@ class UserSerializer(serializers.ModelSerializer):
     groups = Group.objects.filter(user=obj)
     events = Event.objects.filter(group__in=groups)
     return EventSerializer(events, many=True).data
+
+class GroupSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Group
+    fields = '__all__'
