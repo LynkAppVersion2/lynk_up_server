@@ -25,7 +25,6 @@ jobs:
           name: "Run tests"
           command: |
             . .venv/bin/activate
-            export DJANGO_SETTINGS_MODULE='lynk_up_server/lynk_up_server.settings'
             export PYTHONPATH="${PYTHONPATH}:$(pwd)"
             pytest 
 
