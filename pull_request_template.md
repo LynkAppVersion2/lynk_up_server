@@ -1,5 +1,6 @@
 ## Issue
-    Issue:
+
+Issue...
     
 ## Type of change
 
@@ -8,8 +9,14 @@
     [x] Refactor
 
 ## Description of Change:
-Description:
+
+Description...
     
 ## Requested feedback: 
-    
-   I'd like feedback on...
+
+I'd like feedback on...
+
+
+## Additional Notes:
+
+Notes...
