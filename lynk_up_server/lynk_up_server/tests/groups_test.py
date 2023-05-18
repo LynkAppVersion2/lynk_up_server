@@ -1,7 +1,8 @@
 import pytest
 from django.urls import reverse
 from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
-from .models import User, Group, Friend
+from lynk_up_server.models import User, Group, Friend
+
 
 @pytest.mark.django_db
 def test_group_detail(client):
