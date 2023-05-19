@@ -61,6 +61,60 @@ def single_user_response():
   return response_data
 
 @pytest.fixture
+def groups_response():
+    response_data = {
+        "data": {
+            "groups": [
+                {
+                    "id": 1,
+                    "name": "Super Fun time",
+                    "updated": "2023-05-17T20:33:49.959112Z",
+                    "created": "2023-05-17T20:33:49.959162Z",
+                    "user": 1,
+                    "friends": [
+                        1
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "More Fun time",
+                    "updated": "2023-05-17T20:33:49.959112Z",
+                    "created": "2023-05-17T20:33:49.959162Z",
+                    "user": 1,
+                    "friends": [
+                        1
+                    ]
+                },
+                {
+                    "id": 3,
+                    "name": "Pushing the limits time",
+                    "updated": "2023-05-17T20:33:49.959112Z",
+                    "created": "2023-05-17T20:33:49.959162Z",
+                    "user": 2,
+                    "friends": [
+                        1
+                    ]
+                }
+            ]
+        }
+    }
+
+@pytest.fixture
+def single_group_response():
+    response_data = {
+        "data": {
+            "id": 1,
+            "name": "Super Fun time",
+            "updated": "2023-05-17T20:33:49.959112Z",
+            "created": "2023-05-17T20:33:49.959162Z",
+            "user": 1,
+            "friends": [
+                1
+            ]
+        }
+    }
+
+@pytest.fixture
 def not_found_response():
   response = requests.Response()
   response.status_code = 404
