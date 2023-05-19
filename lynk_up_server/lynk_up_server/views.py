@@ -41,3 +41,14 @@ def event_list(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
+  
+@api_view(['GET'])
+def event_detail(request, event_id):
+  try:
+    event = Event.objects.get(pk=event_id)
+  except Event.DoesNotExist:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+    serializer = EventSerializer(event)
+    return Response({"data": serializer.data})
