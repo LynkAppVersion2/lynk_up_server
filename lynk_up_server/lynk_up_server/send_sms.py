@@ -7,13 +7,13 @@ from twilio.rest import Client
 # and set the environment variables. See http://twil.io/secure
 # account_sid = os.environ['TWILIO_ACCOUNT_SID']
 # auth_token = os.environ['TWILIO_AUTH_TOKEN']
-account_sid = 'AC78acde7f808ca3f69b2b85560db44155'
-auth_token = '1351b1e47934846893c9e9c4c9a69388'
+account_sid = os.environ['TWILIO_ACCOUNT_SID']
+auth_token = os.environ['TWILIO_AUTH_TOKEN']
 client = Client(account_sid, auth_token)
 
 message = client.messages \
     .create(
-         messaging_service_sid='MG9752274e9e519418a7406176694466fa',
+         messaging_service_sid= os.environ['MESSAGE_SERVICE_SID'],
          body='body',
          to='+18327294919'
      )
