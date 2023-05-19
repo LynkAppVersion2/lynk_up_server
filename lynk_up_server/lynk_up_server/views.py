@@ -34,3 +34,10 @@ def group_detail(request, group_id):
     if request.method == 'GET':
         serializer = GroupSerializer(group)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def event_list(request):
+  if request.method == 'GET':
+    events = Event.objects.all()
+    serializer = EventSerializer(events, many=True)
+    return Response({"data": serializer.data})
