@@ -81,7 +81,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'lynk_up_server/lynk_up_server.wsgi.application'
+WSGI_APPLICATION = 'lynk_up_server.wsgi.application'
 
 
 # Database
