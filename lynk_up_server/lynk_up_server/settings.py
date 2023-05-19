@@ -32,7 +32,8 @@ environ.Env.read_env()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY = "$&wsi81llw70qzbcle(+h%etw=vr5)i4er*-gzm^em(k*zx#c2"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+# DEBUG = 'RENDER' not in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
