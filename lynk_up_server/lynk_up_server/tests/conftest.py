@@ -119,3 +119,41 @@ def not_found_response():
   response = requests.Response()
   response.status_code = 404
   return response
+
+@pytest.fixture
+def events_response():
+  response = {
+    "data": [
+        {
+            "id": 1,
+            "group_id": 1,
+            "title": "test event",
+            "date": "now",
+            "time": "now",
+            "address": "here"
+        },
+        {
+            "id": 2,
+            "group_id": 1,
+            "title": "test event2",
+            "date": "now",
+            "time": "now",
+            "address": "here"
+        }
+      ]
+    }
+  return response
+
+@pytest.fixture
+def single_event_response():
+    response = {
+        "data": {
+            "id": 1,
+            "group_id": 1,
+            "title": "test event",
+            "date": "now",
+            "time": "now",
+            "address": "here"
+        }
+    }
+    return response
