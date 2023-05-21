@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/<str:phone_number>', views.user_detail),
     path('groups/', views.group_list),
     path('groups/<int:group_id>/', views.group_detail),
+    path('groups/create/', views.group_create),
     path('events/', views.event_list),
     path('events/<int:event_id>/', views.event_detail)
 ]
