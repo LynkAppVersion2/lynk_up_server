@@ -23,10 +23,6 @@ def test_create_friend(db):
     assert user1.friends() == [user2, user3]
     # assert user2.friends() == [user1]
     # assert user3.friends() == [user1]
-
-    # assert list(user_1.friends.all()) == [user_2, user_3]
-    # assert list(user_2.friends.all()) == [user_1]
-    # assert list(user_3.friends.all()) == [user_1]
     
 
 
