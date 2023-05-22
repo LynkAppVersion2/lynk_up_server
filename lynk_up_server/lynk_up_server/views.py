@@ -25,6 +25,14 @@ def user_detail(request, phone_number):
     return Response({"data": serializer.data})
 
 @api_view(['GET'])
+def group_list(request):
+
+  if request.method == 'GET':
+    groups = Group.objects.all()
+    serializer = GroupSerializer(groups, many=True)
+    return Response({"data": serializer.data})
+
+@api_view(['GET'])
 def group_detail(request, group_id):
     try:
         group = Group.objects.get(pk=group_id)
