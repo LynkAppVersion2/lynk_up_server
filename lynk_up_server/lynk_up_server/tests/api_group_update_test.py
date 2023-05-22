@@ -17,7 +17,7 @@ def test_can_update_group(groups_update_response):
     assert response.json() == groups_update_response
 
 @responses.activate
-def test_update_non_existing_group():
+def test_sad_path_non_existing_group():
     responses.add(responses.PUT, 'http://example.com/9999/update/', status=404)
 
     data = {
