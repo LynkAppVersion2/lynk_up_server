@@ -1,7 +1,6 @@
 import requests
 import responses
 import pytest
-import json
 
 @responses.activate
 def test_can_create_group(groups_create_response):
