@@ -11,13 +11,25 @@ class User(models.Model):
   def __str__(self):
     return self.user_name
 
+  def friends(self):
+      return [friend.friend for friend in Friend.objects.filter(user=self)]
+  
+# class Friend(models.Model):
+#   user = models.ForeignKey(User, on_delete=models.CASCADE)
+#   friend_id = models.IntegerField()
+
+#   updated = models.DateTimeField(auto_now=True)
+#   created = models.DateTimeField(auto_now_add=True)
 
 class Friend(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  friend_id = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    friend = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friend_of')
 
-  updated = models.DateTimeField(auto_now=True)
-  created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Friendship between {self.user} and {self.friend}"
 
 
 class Group(models.Model):
