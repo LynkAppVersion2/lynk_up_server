@@ -7,7 +7,7 @@ asttokens==2.2.1
 async-timeout==4.0.2
 attrs==23.1.0
 backcall==0.2.0
-botocore==1.29.133
+botocore==1.29.137
 build==0.10.0
 CacheControl==0.12.11
 certifi==2023.5.7
@@ -89,7 +89,7 @@ traitlets==5.9.0
 trove-classifiers==2023.5.2
 twilio==8.2.0
 typing_extensions==4.5.0
-urllib3==2.0.2
+urllib3==1.26.15
 virtualenv==20.23.0
 wcwidth==0.2.6
 webencodings==0.5.1
