@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 import os
 import dj_database_url
 import environ
+import corsheaders
 
 load_dotenv()
 
@@ -37,12 +38,13 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-# if RENDER_EXTERNAL_HOSTNAME:    
+# if RENDER_EXTERNAL_HOSTNAME:
 #     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'lynk_up_server',
     'rest_framework',
     'django.contrib.admin',
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,3 +140,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Specify domains for CORS
+
+CORS_ALLOW_ALL_ORIGINS = True
