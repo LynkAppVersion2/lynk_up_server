@@ -41,7 +41,6 @@ class Group(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   friends = models.ManyToManyField(Friend)
   name = models.CharField(max_length=40)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
 
   updated = models.DateTimeField(auto_now=True)
   created = models.DateTimeField(auto_now_add=True)

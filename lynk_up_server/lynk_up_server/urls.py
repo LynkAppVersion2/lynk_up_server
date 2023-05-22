@@ -22,7 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', views.user_list),
     path('users/<str:phone_number>', views.user_detail),
-    path('groups/<int:group_id>/', views.group_detail, name='group_detail'),
+    path('groups/', views.group_list),
+    path('groups/<int:group_id>/', views.group_detail),
     path('events/', views.event_list),
     path('events/<int:event_id>/', views.event_detail)
 ]
