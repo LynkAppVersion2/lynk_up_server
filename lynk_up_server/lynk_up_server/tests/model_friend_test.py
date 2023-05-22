@@ -21,8 +21,9 @@ def test_create_friend(db):
 
     # import ipdb; ipdb.set_trace()
     assert user1.friends() == [user2, user3]
-    # assert user2.friends() == [user1]
-    # assert user3.friends() == [user1]
+    assert user2.friends() == [user1]
+    assert user3.friends() == [user1]
+
     
 
 

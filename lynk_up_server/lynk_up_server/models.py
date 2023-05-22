@@ -11,9 +11,18 @@ class User(models.Model):
   def __str__(self):
     return self.user_name
 
-  def friends(self):
-      return [friend.friend for friend in Friend.objects.filter(user=self)]
+  # def friends(self):
+  #     return [friend.friend for friend in Friend.objects.filter(user=self)]
   
+  def friends(self):
+    friends = []
+    for friend in self.friend_of.all():
+      if friend.user == self:
+          friends.append(friend.friend)
+      else:
+          friends.append(friend.user)
+    return friends
+    
 # class Friend(models.Model):
 #   user = models.ForeignKey(User, on_delete=models.CASCADE)
 #   friend_id = models.IntegerField()
