@@ -3,6 +3,7 @@ from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.db import IntegrityError
 
 @api_view(['GET'])
 def user_list(request):
@@ -64,11 +65,16 @@ def event_detail(request, event_id):
 @api_view(['POST'])
 def add_friend(request, user_id):
   try:
-    user = User.objects.get(id=user_id)
-    friend = User.objects.get(id=int(request.data['friend_id']))
-    Friend.objects.create(user=user, friend=friend)
+    user = User.objects.get(id=request.data['user_id'])
+    friend = User.objects.get(id=request.data['friend_id'])
+
+    if friend not in user.added_friends():
+      Friend.objects.create(user=user, friend=friend)
+
   except User.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
+  except Friend.IntegrityError:
+    return Response(status=status.HTTP_409_CONFLICT)
 
   serializer = FriendsListSerializer(user.added_friends(), many=True)
   return Response(

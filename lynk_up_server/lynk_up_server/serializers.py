@@ -46,3 +46,6 @@ class FriendsListSerializer(serializers.ModelSerializer):
       'user_name': instance.user_name,
       'user_id': instance.id
     }
+  class Meta:
+    model = User
+    fields = '__all__'
