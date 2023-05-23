@@ -1,8 +1,9 @@
 from .models import User, Friend, Group, Event
-from .serializers import UserSerializer, EventSerializer, GroupSerializer
+from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.db import IntegrityError
 
 @api_view(['GET'])
 def user_list(request):
@@ -57,7 +58,7 @@ def event_list(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
-  
+
 @api_view(['GET'])
 def event_detail(request, event_id):
   try:
@@ -68,3 +69,22 @@ def event_detail(request, event_id):
   if request.method == 'GET':
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
+
+@api_view(['POST'])
+def add_friend(request, user_id):
+  try:
+    user = User.objects.get(id=request.data['user_id'])
+    friend = User.objects.get(id=request.data['friend_id'])
+
+    if friend not in user.added_friends():
+      Friend.objects.create(user=user, friend=friend)
+
+  except User.DoesNotExist:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+  except IntegrityError:
+    return Response(status=status.HTTP_409_CONFLICT)
+
+  serializer = FriendsListSerializer(user.added_friends(), many=True)
+  return Response(
+    {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
+  )
