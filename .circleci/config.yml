@@ -20,6 +20,7 @@ jobs:
           command: |
             python -m venv .venv
             . .venv/bin/activate
+            /home/circleci/project/.venv/bin/python -m pip install --upgrade pip
             pip install -r lynk_up_server/dependencies.txt
       - run:
           name: "Run tests"
