@@ -25,8 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
 environ.Env.read_env()
 
-os.environ['DJANGO']
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -93,6 +91,7 @@ WSGI_APPLICATION = 'lynk_up_server.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 environment = os.environ.get('ENVIRONMENT')
+print(f'Current environment is set to {environment}')
 
 if environment == 'production':
   DATABASES = {
