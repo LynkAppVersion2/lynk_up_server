@@ -8,7 +8,7 @@ class EventSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
-  # friends = serializers.SerializerMethodField()
+  friends = serializers.SerializerMethodField()
 
   class Meta:
     model = User
@@ -29,8 +29,8 @@ class UserSerializer(serializers.ModelSerializer):
     events = Event.objects.filter(group__in=groups)
     return EventSerializer(events, many=True).data
 
-  # def get_friends(self, obj):
-  #   return UserSerializer(obj.added_friends(), many=True).data
+  def get_friends(self, obj):
+    return UserSerializer(obj.added_friends(), many=True).data
 
 class GroupSerializer(serializers.ModelSerializer):
   class Meta:
