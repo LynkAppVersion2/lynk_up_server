@@ -34,3 +34,4 @@ with vcr.use_cassette('./fixtures/vcr_cassettes/delete_friendship.yaml'):
     response = client.delete(f'/users/{user1.id}/friends/{user2.id}')
     # import ipdb; ipdb.set_trace()
     response_data = get_response_data(response)
+    assert response.status_code == 200
