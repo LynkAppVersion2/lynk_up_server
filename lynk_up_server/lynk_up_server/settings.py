@@ -16,6 +16,7 @@ import os
 import dj_database_url
 import environ
 import corsheaders
+from decouple import config
 
 load_dotenv()
 
@@ -32,7 +33,14 @@ environ.Env.read_env()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'RENDER' not in os.environ
-DEBUG = False
+
+# Setting up environment distinguisher
+# https://pypi.org/project/python-decouple/#toc-entry-6:~:text=Retrieve%20the%20configuration%20parameters%3A
+
+if config('DJANGO_ENV') == 'production':
+  DEBUG = config('DEBUG')
+else:
+  DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -85,26 +93,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'lynk_up_server.wsgi.application'
 
-
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# environment = os.environ.get('ENVIRONMENT')
-# print(f'Current environment is set to {environment}')
+environment = os.environ.get('ENVIRONMENT')
+print(f'Current environment is set to {environment}')
 
-# if environment == 'production':
-#   DATABASES = {
-#     'default': dj_database_url.parse(env('DATABASE_URL'))
-#   }
-
-# else:
-DATABASES = {
-  'default': {
-      'ENGINE': 'django.db.backends.sqlite3',
-      'NAME': BASE_DIR / 'db.sqlite3',
+if environment == 'production':
+  DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
   }
-}
+
+else:
+  DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+  }
 
 # if __name__ == "__main__":
 #   environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
