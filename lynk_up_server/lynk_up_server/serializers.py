@@ -8,11 +8,11 @@ class EventSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
-  friends = serializers.SerializerMethodField()
+  # friends = serializers.SerializerMethodField()
 
   class Meta:
     model = User
-    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events', 'friends')
+    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events')
 
   def to_representation(self, instance):
     ret = super().to_representation(instance)
