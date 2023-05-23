@@ -18,9 +18,9 @@ Welcome to the backend repository of Lynk Up! Lynk Up is a social event manageme
 ---
 
 ## Directory
-  [Hosted Website](<blank>)
+  [Hosted Website](https://lynk-up-client.vercel.app/dashboard)
 
-  [Hosted Server](<blank>)
+  [Hosted Server](https://lynk-up-server.onrender.com/)
 
   [Client Repository](https://github.com/LYNK-UP-APP/lynk-up-client)
 ## About

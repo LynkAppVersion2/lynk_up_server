@@ -154,7 +154,7 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
+pytest.ini
 # Pyre type checker
 .pyre/
 
@@ -172,3 +172,4 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+
