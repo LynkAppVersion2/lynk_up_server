@@ -93,19 +93,18 @@ WSGI_APPLICATION = 'lynk_up_server.wsgi.application'
 
 environment = os.environ.get('ENVIRONMENT')
 
-if environment == 'development':
+if environment == 'production':
   DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+  }
+
+else:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
   }
-
-else:
-  DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
-  }
-
 
 # if __name__ == "__main__":
 #   environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
