@@ -16,7 +16,7 @@ def get_response_data(response):
   }
   return info
 
-with vcr.use_cassette('fixtures/vcr_cassettes/create_friendship.yaml'):
+with vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml'):
   def test_can_create_a_friendship(db):
     user1 = UserFactory.create()
     user2 = UserFactory.create()

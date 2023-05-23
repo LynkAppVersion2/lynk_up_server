@@ -73,7 +73,7 @@ def add_friend(request, user_id):
 
   except User.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
-  except Friend.IntegrityError:
+  except IntegrityError:
     return Response(status=status.HTTP_409_CONFLICT)
 
   serializer = FriendsListSerializer(user.added_friends(), many=True)
