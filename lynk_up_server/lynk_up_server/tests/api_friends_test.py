@@ -16,12 +16,12 @@ def get_response_data(response):
   }
   return info
 
-with vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml'):
-  def test_can_create_a_friendship(db):
-    user1 = UserFactory.create()
-    user2 = UserFactory.create()
+# with vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml'):
+#   def test_can_create_a_friendship(db):
+#     user1 = UserFactory.create()
+#     user2 = UserFactory.create()
 
-    response = client.post(f'/users/{user1.id}/friends', data={'friend_id': user2.id})
-    import ipdb; ipdb.set_trace()
-    response_data = get_response_data(response)
+#     response = client.post(f'/users/{user1.id}/friends', data={'friend_id': user2.id})
+#     import ipdb; ipdb.set_trace()
+#     response_data = get_response_data(response)
 

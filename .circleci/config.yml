@@ -25,7 +25,7 @@ jobs:
           name: "Run tests"
           command: |
             . .venv/bin/activate
-            pytest 
+            pytest
 
 workflows:
   say-hello-workflow:
