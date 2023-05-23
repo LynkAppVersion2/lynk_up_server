@@ -1,7 +1,5 @@
 from .models import User, Friend, Group, Event
-from .serializers import (
-  UserSerializer, EventSerializer, GroupSerializer
-)
+from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -65,9 +63,14 @@ def event_detail(request, event_id):
 
 @api_view(['POST'])
 def add_friend(request, user_id):
-  def get_user(user_id):
-    try:
-      user = User.objects.filter(user_id=user_id)
-    except User.DoesNotExist:
-      return Response(status=status.HTTP_404_NOT_FOUND)
-    serializer = FriendSerializer(user.friends, many=True)
+  try:
+    user = User.objects.get(id=user_id)
+    friend = User.objects.get(id=int(request.data['friend_id']))
+    Friend.objects.create(user=user, friend=friend)
+  except User.DoesNotExist:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+
+  serializer = FriendsListSerializer(user.added_friends(), many=True)
+  return Response(
+    {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
+  )
