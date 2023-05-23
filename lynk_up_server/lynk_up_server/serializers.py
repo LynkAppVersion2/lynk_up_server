@@ -4,7 +4,7 @@ from .models import User, Friend, Group, Event
 class EventSerializer(serializers.ModelSerializer):
   class Meta:
     model = Event
-    fields = ('id', 'group_id', 'title', 'date', 'time', 'address')
+    fields = ('id', 'group', 'title', 'date', 'time', 'address')
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
