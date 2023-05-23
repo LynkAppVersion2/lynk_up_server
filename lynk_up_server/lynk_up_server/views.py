@@ -49,7 +49,7 @@ def event_list(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
-  
+
 @api_view(['GET'])
 def event_detail(request, event_id):
   try:
@@ -60,3 +60,9 @@ def event_detail(request, event_id):
   if request.method == 'GET':
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
+
+@api_view(['POST'])
+def add_friend(request, user_id):
+  import ipdb; ipdb.set_trace()
+  def get_user(user_id):
+    user = User.objects.filter(user_id=user_id)

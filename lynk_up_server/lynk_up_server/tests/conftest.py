@@ -2,6 +2,19 @@ import pytest
 import requests
 
 @pytest.fixture
+def get_response_info(response):
+  info = {
+      'status_code': response.status_code,
+      'data': response.data,
+      'content': response.content,
+      'json_data': response.json(),
+      'headers': response.headers,
+      'cookies': response.cookies,
+      'request': response.request,
+  }
+  return info
+
+@pytest.fixture
 def users_response():
   response_data = {
     "data": [
@@ -157,3 +170,29 @@ def single_event_response():
         }
     }
     return response
+
+@pytest.fixture
+def friends_request():
+  response = {
+    "data": {
+      "friends": [
+        {
+          "user_name": "Harrison Ryan",
+          "user_id": 1
+        },
+        {
+          "user_name": "Joe Fogiato",
+          "user_id": 3
+        },
+        {
+          "user_name": "Antonio KH",
+          "user_id": 4
+        },
+        {
+          "user_name": "Trevor Fitz",
+          "user_id": 5
+        }
+      ]
+    }
+  }
+
