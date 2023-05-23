@@ -87,21 +87,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'lynk_up_server.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
+environment = os.environ.get('ENVIRONMENT')
 
-if environment == 'PROD':
-  print(f'Initializing {environment} environment...')
-  os.environ['ENVIRONMENT'] = 'production'
-  DATABASES = {
-    'default': dj_database_url.parse(env('DATABASE_URL'))
-  }
-
-elif environment == 'DEV':
-  print(f'Initializing {environment} environment...')
-  os.environ['ENVIRONMENT'] = 'development'
+if environment == 'development':
   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -109,15 +101,32 @@ elif environment == 'DEV':
     }
   }
 
+else:
+  DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+  }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+
+# if __name__ == "__main__":
+#   environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
+
+#   if environment == 'PROD':
+#     print(f'Initializing {environment} environment...')
+#     os.environ['ENVIRONMENT'] = 'production'
+#     DATABASES = {
+#       'default': dj_database_url.parse(env('DATABASE_URL'))
 #     }
 
-#     # 'default': dj_database_url.parse(env('DATABASE_URL'))
-# }
+#   elif environment == 'DEV':
+#     print(f'Initializing {environment} environment...')
+#     os.environ['ENVIRONMENT'] = 'development'
+#     DATABASES = {
+#       'default': {
+#           'ENGINE': 'django.db.backends.sqlite3',
+#           'NAME': BASE_DIR / 'db.sqlite3',
+#       }
+#     }
+
 
 
 # Password validation
