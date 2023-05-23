@@ -1,12 +1,12 @@
-## Issue
+## Issue(s)
 
 Link Issue Here
     
 ## Type of change
 
-    [x] New feature
+    [] New feature
     [] Bug Fix
-    [x] Refactor
+    [] Refactor
 
 ## Description of Change
 
