@@ -43,6 +43,14 @@ def group_detail(request, group_id):
         serializer = GroupSerializer(group)
         return Response(serializer.data)
 
+@api_view(['POST'])
+def group_create(request):
+    serializer = GroupSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 @api_view(['GET'])
 def event_list(request):
   if request.method == 'GET':
