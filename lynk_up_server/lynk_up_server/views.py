@@ -88,3 +88,15 @@ def add_friend(request, user_id):
   return Response(
     {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
   )
+
+@api_view(['DELETE'])
+def delete_friend(request, user_id, friend_id):
+  try:
+    user = User.objects.get(id=user_id)
+    user.delete()
+    return Response(status=status.HTTP_200_OK)
+
+  except User.DoesNotExist:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+  except IntegrityError:
+    return Response(status=status.HTTP_409_CONFLICT)
