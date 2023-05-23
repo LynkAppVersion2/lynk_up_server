@@ -65,6 +65,17 @@ def group_update(request, group_id):
       return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
 
+@api_view(['DELETE'])
+def group_delete(request, group_id):
+    try:
+        group = Group.objects.get(pk=group_id)
+    except Group.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+        group.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 @api_view(['GET'])
 def event_list(request):
   if request.method == 'GET':

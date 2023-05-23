@@ -25,6 +25,7 @@ urlpatterns = [
     path('users/<int:user_id>/friends', views.add_friend),
     path('groups/', views.group_list),
     path('groups/<int:group_id>/', views.group_detail),
+    path('groups/<int:group_id>/delete/', views.group_delete),
     path('groups/<int:group_id>/update/', views.group_update),
     path('groups/create/', views.group_create),
     path('events/', views.event_list),
