@@ -26,6 +26,7 @@ jobs:
           name: "Run tests"
           command: |
             . .venv/bin/activate
+            cd lynk_up_server
             pytest
 
 workflows:
