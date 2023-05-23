@@ -1,10 +1,10 @@
 import pytest
-from rest_framework.test import APIClient
+# from rest_framework.test import APIClient
 import vcr
 from .factories import UserFactory
 from lynk_up_server.models import User
 
-client = APIClient(base_url='localhost:8000')
+# client = APIClient(base_url='localhost:8000')
 
 def get_response_data(response):
   info = {
