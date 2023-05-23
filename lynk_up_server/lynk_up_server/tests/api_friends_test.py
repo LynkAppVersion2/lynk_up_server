@@ -6,13 +6,21 @@ from lynk_up_server.models import User
 
 client = APIClient(base_url='localhost:8000')
 
-@pytest.mark.django_db
-@pytest.mark.vcr()
-def test_can_create_a_friendship(get_response_info()):
-  user = UserFactory.create()
-  response = client.post(f'api/v1/{user.id}/friends')
-  import ipdb; ipdb.set_trace()
+@pytest.fixture
+def get_response_data(response):
+  info = {
+      'status_code': response.status_code,
+      'content': response.content,
+      'headers': response.headers,
+      'cookies': response.cookies,
+      'request': response.request,
+  }
+  return info
 
+with vcr.use_cassette('fixtures/vcr_cassettes/create_friendship.yaml'):
+  def test_can_create_a_friendship(db):
+    user = UserFactory.create()
+    response = client.post(f'/users/{user.id}/friends')
+    response_data = get_response_data(response)
 
-  # assert response.status_code == 201
-  #created
+    assert response_data['status_code'] == 201

@@ -2,12 +2,10 @@ import pytest
 import requests
 
 @pytest.fixture
-def get_response_info(response):
+def get_response_data(response):
   info = {
       'status_code': response.status_code,
-      'data': response.data,
       'content': response.content,
-      'json_data': response.json(),
       'headers': response.headers,
       'cookies': response.cookies,
       'request': response.request,
