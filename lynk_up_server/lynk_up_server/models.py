@@ -32,7 +32,7 @@ class Group(models.Model):
     return self.name
 
 class Event(models.Model):
-  group = models.ForeignKey(Group, on_delete=models.CASCADE)
+  group_id = models.ForeignKey(Group, on_delete=models.CASCADE)
   title = models.CharField(max_length=40)
   date = models.CharField(max_length=50)
   time = models.CharField(max_length=40)
