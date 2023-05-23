@@ -157,3 +157,15 @@ def single_event_response():
         }
     }
     return response
+
+@pytest.fixture
+def event_creation_response():
+    response_data = {
+    "group_id": 1,
+    "title": "postman event create test2",
+    "date": "05/24/2023",
+    "time": "4:00pm",
+    "address": "123343 test st.",
+    "description": "test description2"
+    }
+    return response_data
