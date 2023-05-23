@@ -43,13 +43,18 @@ def group_detail(request, group_id):
         serializer = GroupSerializer(group)
         return Response(serializer.data)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def event_list(request):
   if request.method == 'GET':
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
   
+  if request.method == 'POST':
+    serializer = EventSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
 @api_view(['GET'])
 def event_detail(request, event_id):
   try:
