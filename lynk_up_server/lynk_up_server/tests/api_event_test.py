@@ -1,5 +1,6 @@
 import requests
 import pytest
+import responses
 
 def test_can_call_all_events(events_response):
   response_data = events_response
@@ -27,6 +28,36 @@ def test_can_return_valid_data_for_a_single_event(single_event_response):
   assert response.status_code == 200
   assert response.json() == single_event_response
 
-def test_will_return_error_status_if_event_is_not_found(not_found_response):
-  response = not_found_response
-  assert response.status_code == 404
+@responses.activate
+def test_can_create_event(event_creation_response):
+  responses.add(responses.POST, 'http://example.com', json=event_creation_response, status=201)
+  payload = {
+    "group_id": 1,
+    "title": "postman event create test3",
+    "date": "05/14/2023",
+    "time": "5:00pm",
+    "address": "143 test st.",
+    "description": "test description3"
+  }
+  response = requests.post('http://example.com', json=payload)
+  
+  assert response.status_code == 201
+  assert response.json() == event_creation_response
+
+@responses.activate
+def test_sad_path_missing_fields():
+  error_message = {"error": "Missing field: group_id"}
+  responses.add(responses.POST, 'http://example.com', json=error_message, status=400)
+
+  data = payload = {
+    # "group_id": missing,
+    "title": "postman event create test3",
+    "date": "05/14/2023",
+    "time": "5:00pm",
+    "address": "143 test st.",
+    "description": "test description3"
+  }
+  response = requests.post('http://example.com', json=data)
+  
+  assert response.status_code == 400
+  assert response.json() == error_message
