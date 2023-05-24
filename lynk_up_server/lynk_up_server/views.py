@@ -124,7 +124,7 @@ def add_friend(request, user_id):
 
   elif request.method == 'POST':
     try:
-      user = User.objects.get(id=request.data['user_id'])
+      user = User.objects.get(id=user_id)
       friend = User.objects.get(id=request.data['friend_id'])
 
       if friend not in user.added_friends():
