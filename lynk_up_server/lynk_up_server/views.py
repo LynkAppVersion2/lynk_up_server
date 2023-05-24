@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.db import IntegrityError
+from django.views.decorators.http import require_http_methods
 
 @api_view(['GET'])
 def user_list(request):
@@ -96,6 +97,8 @@ def event_detail(request, event_id):
 
 @api_view(['POST'])
 def add_friend(request, user_id):
+  # import ipdb; ipdb.set_trace()
+
   try:
     user = User.objects.get(id=request.data['user_id'])
     friend = User.objects.get(id=request.data['friend_id'])
@@ -113,14 +116,19 @@ def add_friend(request, user_id):
     {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
   )
 
-@api_view(['DELETE'])
+@require_http_methods(['DELETE'])
 def delete_friend(request, user_id, friend_id):
+  # import ipdb; ipdb.set_trace()
   try:
     user = User.objects.get(id=user_id)
-    user.delete()
-    return Response(status=status.HTTP_200_OK)
+    friend = User.objects.get(id=friend_id)
+    friendship = Friend.objects.filter(user=user, friend=friend).first()
 
+    if friendship:
+      friendship.delete()
+      return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+    
   except User.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
-  except IntegrityError:
-    return Response(status=status.HTTP_409_CONFLICT)
