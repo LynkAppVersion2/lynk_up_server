@@ -209,11 +209,12 @@ def single_event_response():
 def event_creation_response():
     response_data = {
     "group_id": 1,
-    "title": "postman event create test2",
-    "date": "05/24/2023",
-    "time": "4:00pm",
-    "address": "123343 test st.",
-    "description": "test description2"
+    "group_name": "test name",
+    "title": "postman event create test3",
+    "date": "05/14/2023",
+    "time": "5:00pm",
+    "address": "143 test st.",
+    "description": "test description3"
     }
     return response_data
 
