@@ -82,7 +82,6 @@ def event_list(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
-<<<<<<< HEAD
   
   if request.method == 'POST':
     serializer = EventSerializer(data=request.data)
@@ -91,10 +90,6 @@ def event_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 @api_view(['GET', 'PUT', 'DELETE'])
-=======
-
-@api_view(['GET'])
->>>>>>> main
 def event_detail(request, event_id):
   try:
     event = Event.objects.get(pk=event_id)
@@ -104,7 +99,6 @@ def event_detail(request, event_id):
   if request.method == 'GET':
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
-<<<<<<< HEAD
   
   elif request.method == 'PUT':
     serializer = EventSerializer(event, data=request.data)
@@ -116,7 +110,7 @@ def event_detail(request, event_id):
   elif request.method == 'DELETE':
     event.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
-=======
+
 
 @api_view(['POST'])
 def add_friend(request, user_id):
@@ -136,4 +130,3 @@ def add_friend(request, user_id):
   return Response(
     {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
   )
->>>>>>> main
