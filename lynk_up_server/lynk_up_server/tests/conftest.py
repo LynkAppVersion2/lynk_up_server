@@ -169,3 +169,21 @@ def event_creation_response():
     "description": "test description2"
     }
     return response_data
+
+@pytest.fixture
+def event_update_response():
+   response_data = {
+    "id": 4,
+    "group_id": 1,
+    "title": "changed event create test",
+    "date": "05/23/2023",
+    "time": "3:00pm",
+    "address": "123 test st."
+    }
+   return response_data
+
+@pytest.fixture
+def deleted_response():
+  response = requests.Response()
+  response.status_code = 204
+  return response

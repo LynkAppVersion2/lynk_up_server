@@ -61,3 +61,27 @@ def test_sad_path_missing_fields():
   
   assert response.status_code == 400
   assert response.json() == error_message
+  
+
+@responses.activate
+def test_update_event(event_update_response):
+  responses.add(responses.PUT, 'http://example.com', json=event_update_response, status=200)
+  payload = {
+    "id": 4,
+    "group_id": 1,
+    "title": "changed event create test",
+    "date": "05/23/2023",
+    "time": "3:00pm",
+    "address": "123 test st."
+    }
+  response = requests.put('http://example.com', json=payload)
+
+  assert response.status_code == 200
+  assert response.json() == event_update_response
+
+@responses.activate
+def test_delete_event(deleted_response):
+  responses.add(responses.DELETE, 'http://example.com', status=204)
+  response = requests.delete('http://example.com')
+
+  assert response.status_code == 204
