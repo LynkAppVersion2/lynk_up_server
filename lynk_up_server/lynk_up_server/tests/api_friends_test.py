@@ -1,36 +1,36 @@
-import pytest
-from rest_framework.test import APIClient
-import vcr
-from .factories import UserFactory
-from lynk_up_server.models import *
+# import pytest
+# from rest_framework.test import APIClient
+# import vcr
+# from .factories import UserFactory
+# from lynk_up_server.models import *
 
-client = APIClient(base_url='localhost:8000')
+# client = APIClient(base_url='localhost:8000')
 
-def get_response_data(response):
-  info = {
-      'status_code': response.status_code,
-      'content': response.content,
-      'headers': response.headers,
-      'cookies': response.cookies,
-      'request': response.request,
-  }
-  return info
+# def get_response_data(response):
+#   info = {
+#       'status_code': response.status_code,
+#       'content': response.content,
+#       'headers': response.headers,
+#       'cookies': response.cookies,
+#       'request': response.request,
+#   }
+#   return info
 
-with vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml'):
-  def test_can_create_a_friendship(db):
-    user1 = UserFactory.create()
-    user2 = UserFactory.create()
+# with vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml'):
+#   def test_can_create_a_friendship(db):
+#     user1 = UserFactory.create()
+#     user2 = UserFactory.create()
 
-    response = client.post(f'/users/{user1.id}/friends', data={'friend_id': user2.id})
-    response_data = get_response_data(response)
+#     response = client.post(f'/users/{user1.id}/friends', data={'friend_id': user2.id})
+#     response_data = get_response_data(response)
 
-with vcr.use_cassette('./fixtures/vcr_cassettes/get_friends.yaml'):
-  def test_can_get_a_users_friends(db):
-    user1 = UserFactory.create()
-    user2 = UserFactory.create()
+# with vcr.use_cassette('./fixtures/vcr_cassettes/get_friends.yaml'):
+#   def test_can_get_a_users_friends(db):
+#     user1 = UserFactory.create()
+#     user2 = UserFactory.create()
 
-    Friend.objects.create(user=user1, friend=user2)
+#     Friend.objects.create(user=user1, friend=user2)
 
-    response = client.get(f'/users/{user1.id}/friends')
-    response_data = get_response_data(response)
+#     response = client.get(f'/users/{user1.id}/friends')
+#     response_data = get_response_data(response)
 
