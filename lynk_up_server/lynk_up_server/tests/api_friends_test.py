@@ -1,8 +1,8 @@
-import pytest
-from rest_framework.test import APIClient
-import vcr
-from .factories import UserFactory
-from lynk_up_server.models import User, Friend
+# import pytest
+# from rest_framework.test import APIClient
+# import vcr
+# from .factories import UserFactory
+# from lynk_up_server.models import *
 
 client = APIClient(base_url='localhost:8000')
 
@@ -22,7 +22,16 @@ def get_response_data(response):
 #     user2 = UserFactory.create()
 
 #     response = client.post(f'/users/{user1.id}/friends', data={'friend_id': user2.id})
-#     import ipdb; ipdb.set_trace()
+#     response_data = get_response_data(response)
+
+# with vcr.use_cassette('./fixtures/vcr_cassettes/get_friends.yaml'):
+#   def test_can_get_a_users_friends(db):
+#     user1 = UserFactory.create()
+#     user2 = UserFactory.create()
+
+#     Friend.objects.create(user=user1, friend=user2)
+
+#     response = client.get(f'/users/{user1.id}/friends')
 #     response_data = get_response_data(response)
 
 with vcr.use_cassette('./fixtures/vcr_cassettes/delete_friendship.yaml'):
