@@ -11,15 +11,11 @@ def test_create_friend(db):
     friendship1 = Friend.objects.create(user=user1, friend=user2)
     friendship2 = Friend.objects.create(user=user1, friend=user3)
 
-
     assert friendship1.user == user1
     assert friendship1.friend == user2
     assert friendship2.user == user1
     assert friendship2.friend == user3
 
-
-
-    # import ipdb; ipdb.set_trace()
     assert user1.added_friends() == [user2, user3]
     assert user2.accepted_friend() == [user1]
     assert user3.accepted_friend() == [user1]

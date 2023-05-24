@@ -16,15 +16,7 @@ class User(models.Model):
 
   def accepted_friend(self):
     return [friend.user for friend in Friend.objects.filter(friend=self)]
-
-    # friends = []
-    # for friend in self.friend_of.all():
-    #   if friend.user == self:
-    #     friends.append(friend.friend)
-    #   else:
-    #     import ipdb; ipdb.set_trace()
-    #     friends.append(friend.user)
-    # return friends
+  
 
 class Friend(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
