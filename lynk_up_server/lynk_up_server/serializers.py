@@ -2,9 +2,14 @@ from rest_framework import serializers
 from .models import User, Friend, Group, Event
 
 class EventSerializer(serializers.ModelSerializer):
+  group_name = serializers.SerializerMethodField()
+
   class Meta:
     model = Event
-    fields = '__all__'
+    fields = ('group', 'group_name', 'title', 'date', 'time', 'address', 'description')
+  
+  def get_group_name(self, obj):
+    return obj.group.name
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
