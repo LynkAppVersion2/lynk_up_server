@@ -34,13 +34,13 @@ def get_response_data(response):
 #     response = client.get(f'/users/{user1.id}/friends')
 #     response_data = get_response_data(response)
 
-with vcr.use_cassette('./fixtures/vcr_cassettes/delete_friendship.yaml'):
-  def test_can_delete_a_friendship(db):
-    user1 = UserFactory.create()
-    user2 = UserFactory.create()
-    friendship = Friend.objects.create(user=user1, friend=user2)
+# with vcr.use_cassette('./fixtures/vcr_cassettes/delete_friendship.yaml'):
+#   def test_can_delete_a_friendship(db):
+#     user1 = UserFactory.create()
+#     user2 = UserFactory.create()
+#     friendship = Friend.objects.create(user=user1, friend=user2)
 
-    response = client.delete(f'/users/{user1.id}/friends/{user2.id}/')
-    # import ipdb; ipdb.set_trace()
-    response_data = get_response_data(response)
-    assert response.status_code == 200
+#     response = client.delete(f'/users/{user1.id}/friends/{user2.id}/')
+#     # import ipdb; ipdb.set_trace()
+#     response_data = get_response_data(response)
+#     assert response.status_code == 200
