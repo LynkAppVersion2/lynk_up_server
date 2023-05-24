@@ -60,7 +60,6 @@ poetry==1.5.0
 poetry-core==1.6.0
 poetry-plugin-export==1.3.1
 prompt-toolkit==3.0.38
-psycopg2==2.9.6
 psycopg2-binary==2.9.6
 ptyprocess==0.7.0
 pure-eval==0.2.2
@@ -79,9 +78,9 @@ pytz==2023.3
 PyYAML==6.0
 rapidfuzz==2.15.1
 regex==2023.5.5
-responses
 requests==2.30.0
 requests-toolbelt==1.0.0
+responses==0.23.1
 s3transfer==0.6.1
 shellingham==1.5.0.post1
 six==1.16.0
@@ -92,6 +91,7 @@ tomlkit==0.11.8
 traitlets==5.9.0
 trove-classifiers==2023.5.2
 twilio==8.2.0
+types-PyYAML==6.0.12.10
 typing_extensions==4.5.0
 urllib3==1.26.15
 vcrpy==4.2.1

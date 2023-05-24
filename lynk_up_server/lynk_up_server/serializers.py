@@ -4,15 +4,14 @@ from .models import User, Friend, Group, Event
 class EventSerializer(serializers.ModelSerializer):
   class Meta:
     model = Event
-    fields = ('id', 'group_id', 'title', 'date', 'time', 'address')
+    fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
-  friends = serializers.SerializerMethodField()
 
   class Meta:
     model = User
-    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events', 'friends')
+    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events')
 
   def to_representation(self, instance):
     ret = super().to_representation(instance)
@@ -28,9 +27,6 @@ class UserSerializer(serializers.ModelSerializer):
     groups = Group.objects.filter(user=obj)
     events = Event.objects.filter(group__in=groups)
     return EventSerializer(events, many=True).data
-
-  def get_friends(self, obj):
-    return UserSerializer(obj.added_friends(), many=True).data
 
 class GroupSerializer(serializers.ModelSerializer):
   class Meta:
