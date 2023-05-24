@@ -16,6 +16,7 @@ class User(models.Model):
 
   def accepted_friend(self):
     return [friend.user for friend in Friend.objects.filter(friend=self)]
+  
 
 class Friend(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)

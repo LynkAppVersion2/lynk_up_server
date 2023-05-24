@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.db import IntegrityError
+from django.views.decorators.http import require_http_methods
 
 @api_view(['GET'])
 def user_list(request):
@@ -112,7 +113,7 @@ def event_detail(request, event_id):
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST', 'GET', 'DELETE'])
 def add_friend(request, user_id):
   if request.method == 'GET':
     user = User.objects.get(id=user_id)
@@ -138,4 +139,20 @@ def add_friend(request, user_id):
     return Response(
       {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
     )
+  
+  elif request.method == 'DELETE':
+    try:
+      user = User.objects.get(id=user_id)
+      friend_id = int(request.data['friend_id'])
 
+      friend = User.objects.get(id=friend_id)
+      friendship = Friend.objects.filter(user=user, friend=friend).first()
+
+      if friendship:
+        friendship.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+      else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+      
+    except User.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
