@@ -63,7 +63,7 @@ def group_update(request, group_id):
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST) 
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['DELETE'])
 def group_delete(request, group_id):
@@ -82,13 +82,13 @@ def event_list(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
-  
+
   if request.method == 'POST':
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
 @api_view(['GET', 'PUT', 'DELETE'])
 def event_detail(request, event_id):
   try:
@@ -99,34 +99,43 @@ def event_detail(request, event_id):
   if request.method == 'GET':
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
-  
+
   elif request.method == 'PUT':
     serializer = EventSerializer(event, data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-  
+
   elif request.method == 'DELETE':
     event.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['POST'])
+@api_view(['POST', 'GET'])
 def add_friend(request, user_id):
-  try:
-    user = User.objects.get(id=request.data['user_id'])
-    friend = User.objects.get(id=request.data['friend_id'])
+  if request.method == 'GET':
+    user = User.objects.get(id=user_id)
+    serializer = FriendsListSerializer(user.added_friends(), many=True)
+    return Response(
+      {"data": {"friends":serializer.data}}, status=200, content_type='application/json'
+    )
 
-    if friend not in user.added_friends():
-      Friend.objects.create(user=user, friend=friend)
+  elif request.method == 'POST':
+    try:
+      user = User.objects.get(id=request.data['user_id'])
+      friend = User.objects.get(id=request.data['friend_id'])
 
-  except User.DoesNotExist:
-    return Response(status=status.HTTP_404_NOT_FOUND)
-  except IntegrityError:
-    return Response(status=status.HTTP_409_CONFLICT)
+      if friend not in user.added_friends():
+        Friend.objects.create(user=user, friend=friend)
 
-  serializer = FriendsListSerializer(user.added_friends(), many=True)
-  return Response(
-    {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
-  )
+    except User.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+    except IntegrityError:
+      return Response(status=status.HTTP_409_CONFLICT)
+
+    serializer = FriendsListSerializer(user.added_friends(), many=True)
+    return Response(
+      {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
+    )
+
