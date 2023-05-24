@@ -6,7 +6,7 @@ class EventSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Event
-    fields = ('group', 'group_name', 'title', 'date', 'time', 'address', 'description')
+    fields = ('id', 'group', 'group_name', 'title', 'date', 'time', 'address', 'description')
   
   def get_group_name(self, obj):
     return obj.group.name
