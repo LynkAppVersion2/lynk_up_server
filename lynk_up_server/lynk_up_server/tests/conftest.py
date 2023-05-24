@@ -206,6 +206,36 @@ def single_event_response():
     return response
 
 @pytest.fixture
+def event_creation_response():
+    response_data = {
+    "group_id": 1,
+    "title": "postman event create test2",
+    "date": "05/24/2023",
+    "time": "4:00pm",
+    "address": "123343 test st.",
+    "description": "test description2"
+    }
+    return response_data
+
+@pytest.fixture
+def event_update_response():
+   response_data = {
+    "id": 4,
+    "group_id": 1,
+    "title": "changed event create test",
+    "date": "05/23/2023",
+    "time": "3:00pm",
+    "address": "123 test st."
+    }
+   return response_data
+
+@pytest.fixture
+def deleted_response():
+  response = requests.Response()
+  response.status_code = 204
+  return response
+
+@pytest.fixture
 def friends_request():
   response = {
     "data": {
