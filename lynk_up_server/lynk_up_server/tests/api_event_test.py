@@ -33,6 +33,7 @@ def test_can_create_event(event_creation_response):
   responses.add(responses.POST, 'http://example.com', json=event_creation_response, status=201)
   payload = {
     "group_id": 1,
+    "group_name": "test name",
     "title": "postman event create test3",
     "date": "05/14/2023",
     "time": "5:00pm",
