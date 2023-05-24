@@ -113,6 +113,12 @@ else:
     }
   }
 
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+             'rest_framework.authentication.BasicAuthentication',
+        )}
+
 # if __name__ == "__main__":
 #   environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
 
