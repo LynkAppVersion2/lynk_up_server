@@ -15,9 +15,9 @@ def user_list(request):
 
 
 @api_view(['GET'])
-def user_detail(request, phone_number):
+def user_detail(request, user_id):
   try:
-    user = User.objects.get(phone_number=phone_number)
+    user = User.objects.get(pk=user_id)
   except User.DoesNotExist:
     return Response(status=status.HTTP_404_NOT_FOUND)
 

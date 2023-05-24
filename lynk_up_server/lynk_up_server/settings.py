@@ -18,6 +18,7 @@ import environ
 import corsheaders
 from decouple import config
 
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -178,3 +179,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Specify domains for CORS
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
