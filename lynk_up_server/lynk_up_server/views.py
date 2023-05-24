@@ -77,14 +77,20 @@ def group_delete(request, group_id):
         group.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def event_list(request):
   if request.method == 'GET':
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
-
-@api_view(['GET'])
+  
+  if request.method == 'POST':
+    serializer = EventSerializer(data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+@api_view(['GET', 'PUT', 'DELETE'])
 def event_detail(request, event_id):
   try:
     event = Event.objects.get(pk=event_id)
@@ -94,6 +100,18 @@ def event_detail(request, event_id):
   if request.method == 'GET':
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
+  
+  elif request.method == 'PUT':
+    serializer = EventSerializer(event, data=request.data)
+    if serializer.is_valid():
+      serializer.save()
+      return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+  
+  elif request.method == 'DELETE':
+    event.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['POST'])
 def add_friend(request, user_id):

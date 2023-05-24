@@ -113,6 +113,12 @@ else:
     }
   }
 
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+             'rest_framework.authentication.BasicAuthentication',
+        )}
+
 # if __name__ == "__main__":
 #   environment = input("What environment would you like to initialize? Enter DEV or PROD\n")
 
@@ -135,7 +141,7 @@ else:
 
 
 
-# Password validation
+# Password validatigit 
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
