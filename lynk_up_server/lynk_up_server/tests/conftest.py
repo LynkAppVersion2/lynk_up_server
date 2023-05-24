@@ -145,6 +145,23 @@ def groups_create_response():
     return response_data
 
 @pytest.fixture
+def groups_update_response():
+    response_data = {
+        "data": {
+            "id": 1,
+            "name": "Updated Test Group",
+            "updated": "2023-05-18T21:33:49.959112Z",
+            "created": "2023-05-17T20:33:49.959162Z",
+            "user": 1,
+            "friends": [
+                2,
+                3
+            ]
+        }    
+    }
+    return response_data
+
+@pytest.fixture
 def not_found_response():
   response = requests.Response()
   response.status_code = 404
