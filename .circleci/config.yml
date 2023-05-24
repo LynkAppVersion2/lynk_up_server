@@ -20,12 +20,14 @@ jobs:
           command: |
             python -m venv .venv
             . .venv/bin/activate
+            /home/circleci/project/.venv/bin/python -m pip install --upgrade pip
             pip install -r lynk_up_server/dependencies.txt
       - run:
           name: "Run tests"
           command: |
             . .venv/bin/activate
-            pytest 
+            cd lynk_up_server
+            pytest
 
 workflows:
   say-hello-workflow:

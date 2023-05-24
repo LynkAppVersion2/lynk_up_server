@@ -2,6 +2,17 @@ import pytest
 import requests
 
 @pytest.fixture
+def get_response_data(response):
+  info = {
+      'status_code': response.status_code,
+      'content': response.content,
+      'headers': response.headers,
+      'cookies': response.cookies,
+      'request': response.request,
+  }
+  return info
+
+@pytest.fixture
 def users_response():
   response_data = {
     "data": [
@@ -98,6 +109,7 @@ def groups_response():
             ]
         }
     }
+    return response_data
 
 @pytest.fixture
 def single_group_response():
@@ -113,6 +125,41 @@ def single_group_response():
             ]
         }
     }
+    return response_data
+
+@pytest.fixture
+def groups_create_response():
+    response_data = {
+        "data": {
+            "id": 1,
+            "name": "Test Group",
+            "updated": "2023-05-17T20:33:49.959112Z",
+            "created": "2023-05-17T20:33:49.959162Z",
+            "user": 1,
+            "friends": [
+                1,
+                2
+            ]
+        }    
+    }
+    return response_data
+
+@pytest.fixture
+def groups_update_response():
+    response_data = {
+        "data": {
+            "id": 1,
+            "name": "Updated Test Group",
+            "updated": "2023-05-18T21:33:49.959112Z",
+            "created": "2023-05-17T20:33:49.959162Z",
+            "user": 1,
+            "friends": [
+                2,
+                3
+            ]
+        }    
+    }
+    return response_data
 
 @pytest.fixture
 def not_found_response():
@@ -187,3 +234,29 @@ def deleted_response():
   response = requests.Response()
   response.status_code = 204
   return response
+
+@pytest.fixture
+def friends_request():
+  response = {
+    "data": {
+      "friends": [
+        {
+          "user_name": "Harrison Ryan",
+          "user_id": 1
+        },
+        {
+          "user_name": "Joe Fogiato",
+          "user_id": 3
+        },
+        {
+          "user_name": "Antonio KH",
+          "user_id": 4
+        },
+        {
+          "user_name": "Trevor Fitz",
+          "user_id": 5
+        }
+      ]
+    }
+  }
+
