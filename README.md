@@ -55,7 +55,7 @@ https://lynk-up-server.onrender.com
 ### Get a User
 
 ```http
-GET /users/:user_id
+GET /users/:user_id/
 ```
 
 <details close>
@@ -123,7 +123,7 @@ Response:
 ### Get an Event
 
 ```http
-GET /events/:event_id
+GET /events/:event_id/
 ```
 
 <details close>
@@ -225,6 +225,43 @@ Response:
 
 ---
 
+### Delete Event
+
+```http
+POST /events/:event_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+    
+Request: <br>
+```json
+{
+    "event_id": 1,
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 204 | `NO CONTENT` |
+
+Response:
+
+```
+No Response
+```
+
+Errors: 
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+</details>
+
+---
+
 ### Get all Events
 
 ```http
@@ -308,7 +345,7 @@ Response:
 ### Get a Users' Friends
 
 ```http
-GET /users/:user_id/friends
+GET /users/:user_id/friends/
 ```
 
 <details close>
@@ -367,7 +404,7 @@ Response:
 ### Create Friend
 
 ```http
-POST /users/:user_id/friends
+POST /users/:user_id/friends/
 ```
 
 <details close>
@@ -413,6 +450,43 @@ Response:
     }
 }
 ```
+
+</details>
+
+---
+
+### Delete Friend
+
+```http
+POST /users/:user_id/friends/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+    
+Request: <br>
+```json
+{
+    "friend_id": 1,
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 204 | `NO CONTENT` |
+
+Response:
+
+```
+No Response
+```
+
+Errors: 
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
 
 </details>
 
@@ -494,7 +568,7 @@ Response:
 ### Get a Group
 
 ```http
-GET /groups/:group_id
+GET /groups/:group_id/
 ```
 
 <details close>
@@ -547,7 +621,44 @@ Response:
 ```
 
 </details>
+
+---
+
+### Delete Group
+
+```http
+POST /groups/:group_id/delete/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+    
+Request: <br>
+```json
+{
+    "group_id": 1,
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 204 | `NO CONTENT` |
+
+Response:
+
+```
+No Response
+```
+
+Errors: 
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
 </details>
+
 
 ---
 
