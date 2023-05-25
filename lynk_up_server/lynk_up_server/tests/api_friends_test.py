@@ -8,7 +8,8 @@ from lynk_up_server.models import *
 vcr = VCR()
 client = APIClient()
 
-def bytes_to_dict(response, key):
+# For converting your content bytestring into a json string
+def bytes_to_json(response, key):
   decoded = response[key][0].decode('utf-8')
   return json.loads(decoded)
 
