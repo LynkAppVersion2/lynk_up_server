@@ -1,14 +1,15 @@
 import pytest, requests,json
 from pprint import pprint
-from rest_framework.test import APITestCase
+from rest_framework.test import APIClient
 from vcr import VCR
 from .factories import UserFactory
 from lynk_up_server.models import *
 
 vcr = VCR()
+client = APIClient()
 
 def bytes_to_dict(response, key):
-  decoded = response[key].decode('utf-8')
+  decoded = response[key][0].decode('utf-8')
   return json.loads(decoded)
 
 @vcr.use_cassette('./fixtures/vcr_cassettes/create_friendship.yaml')
@@ -16,10 +17,13 @@ def test_can_create_a_friendship(db):
   user1 = UserFactory.create()
   user2 = UserFactory.create()
 
-  url = f'http://localhost:8000/users/{user1.id}/friends/'
-  response = vars(requests.post(url, data={'friend_id': user2.id}))
-
-  content = bytes_to_dict(response, '_content')
+  # url = f'/users/{user1.id}/friends/'
+  # response = vars(requests.post(url, data={'friend_id': user2.id}))
+  payload = dict(
+    friend_id=user2.id
+  )
+  response = vars(client.post(f'/users/{user1.id}/friends/', payload))
+  content = bytes_to_dict(response, '_container')
   assert response['status_code'] == 201
   assert 'data' in content
   assert isinstance(content['data'], dict)
@@ -27,7 +31,6 @@ def test_can_create_a_friendship(db):
   data = content['data']
   assert isinstance(data['friends'], list)
   assert 'user_name' in data['friends'][0]
-  import ipdb; ipdb.set_trace()
   assert data['friends'][0]['user_name'] == user2.user_name
   assert 'user_id' in data['friends'][0]
   assert data['friends'][0]['user_id'] == user2.id
