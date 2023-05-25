@@ -44,13 +44,18 @@ Note: Please ensure you have Python and pip installed on your machine before run
 ---
 ## RESTful Endpoints
 
+Base url to reach the endpoints listed below:
+```
+https://lynk-up-server.onrender.com
+```
+
 <details close>
 <summary> All Endpoints </summary>
 
 ### Get a User
 
 ```http
-GET /api/v1/users/:phone_number
+GET users/:user_id
 ```
 
 <details close>
@@ -73,28 +78,24 @@ Response:
 {
     "data": {
         "id": "1",
-        "type": "user",
         "attributes": {
-            "full_name": "Antonio King Hunt",
+            "user_name": "Tesseract",
             "phone_number": "888-888-8888",
-            "email": "tesseractcode@gmail.com",
-            "events": [
-                {
-                    "id": 1
-                    "title": "Magic Tournament"
-                    "date": "05/20/2023"
-                    "time": "7:00 PM MST"
-                    "address": { 
-                                    "street": "1940 Harve. Ave.",
-                                    "unit": "Ste. 1-A",
-                                    "city": "Missoula",
-                                    "state": "MT",
-                                    "zip_code": 59801
-                    }
-                },
-                {etc}
-            ]
-        }
+            "full_name": "Antonio King Hunt",
+        },
+        "events": [
+            {
+                "id": 1,
+                "group": 1,
+                "group_name": "Best Buds",
+                "title": "Magic Tournament",
+                "date": "05-23-2023",
+                "time": "7:00pm",
+                "address": "123 fun st.",
+                "description": "Fun times with fun people"
+            },
+            {etc}
+        ]
     }
 }
 ```
@@ -119,10 +120,10 @@ Response:
 
 ---
 
-### Get Events for a User
+### Get an Event
 
 ```http
-GET /api/v1/events/:user_id
+GET events/:event_id
 ```
 
 <details close>
@@ -132,7 +133,7 @@ GET /api/v1/events/:user_id
 Request: <br>
 ```json
 {
-    "user_id": 1
+    "event_id": 1
 }
 ```
 
@@ -146,21 +147,14 @@ Response:
 
 {
     "data": {
-        "events": [
-            {
-                "id": "1",
-                "name": "Party in the park",
-                "date": "05/10/2023",
-                "time": "7:00 PM MST"
-            },
-            {
-                "id": "4",
-                "name": "Another Party in the park",
-                "date": "06/10/2023",
-                "time": "7:00 PM MST"
-            },
-            {"etc": ""}
-        ]
+        "id": 1,
+        "group": 1,
+        "group_name": "Best Buds",
+        "title": "Magic Tournament",
+        "date": "05-23-2023",
+        "time": "7:00pm",
+        "address": "123 fun st",
+        "description": "Fun times with fun people"
     }
 }
 ```
@@ -188,7 +182,7 @@ Response:
 ### Create Event
 
 ```http
-POST /api/v1/events/
+POST /events/
 ```
 
 <details close>
@@ -197,25 +191,14 @@ POST /api/v1/events/
     
 Request: <br>
 ```json
-{
-    "title": "Party at the Park",
-    "details": "PARTY IN THE PARK LETS GO",
-    "address_1": "123 Main st",
-    "address_2": "Unit 3",
-    "city": "Fort Collins",
-    "state": "CO",
-    "zip_code": "80525",
-    "date": "01/01/2024",
-    "time": "7:00 PM MST",
-    "groups": [
-        {
-            "id": "1"
-        },
-        {
-            "id": "4"
-        }
-    ]
-}
+    {
+        "title": "Party at the Park",
+        "date": "05-23-2023",
+        "time": "6:00pm",
+        "address": "6 Paper st",
+        "description": "PARTY!",
+        "group": 1
+    }
 ```
 
 | Code | Description |
@@ -227,33 +210,14 @@ Response:
 ```json
 
 {
-    "data": {
-    "id": "1",
-        "title": "Party at the Park",
-        "details": "12345 W. East St.",
-        "address_1": "Unit 101",
-        "address_2": "Fort Collins",
-        "city": "Fort Collins",
-        "state": "CO",
-        "zip_code": "80525",
-        "date": "01/01/2024",
-        "time": "7:00 PM MST",
-        "groups": [
-            {
-                "name": "Brunch",
-                "friends": [
-                    {
-                        "id": "1",
-                        "name": "Andra Helton"
-                    },
-                    {
-                        "id": "4",
-                        "name": "Antonio King Hunt"
-                    }
-                ]
-            }
-        ]
-    }
+    "id": 2,
+    "group": 1,
+    "group_name": "Best Buds",
+    "title": "Party at the Park",
+    "date": "05-23-2023",
+    "time": "6:00pm",
+    "address": "6 Paper st",
+    "description": "PARTY!"
 }
 ```
 
@@ -261,21 +225,19 @@ Response:
 
 ---
 
-### Get one Event
+### Get all Events
 
 ```http
-GET /api/v1/events/:event_id
+GET /events/
 ```
 
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
-```json
-{
-    "id": 1
-}
+```
+No Parameters
 ```
 
 | Code | Description |
@@ -287,32 +249,39 @@ Response:
 ```json
 
 {
-    "data": {
-        "id": "1",
-        "title": "Party at the Park",
-        "details": "PARTY",
-        "address_1": "123 Main St",
-        "address_2": "Unit 101",
-        "city": "Fort Collins",
-        "state": "CO",
-        "zip_code": "80525",
-        "date": "01/01/2024",
-        "time": "7:00 PM MST",
-        "group": {
-            "id": "1",
-            "name": "Brunch",
-            "friends": [
-                {
-                    "id": "1",
-                    "name": "Andra Helton"
-                },
-                {
-                    "id": "4",
-                    "name": "Antonio King Hunt"
-                }
-            ]
-        }
-    }
+    "data": [
+        {
+            "id": 1,
+            "group": 1,
+            "group_name": "Best Buds",
+            "title": "Magic Tournament",
+            "date": "05-23-2023",
+            "time": "7:00pm",
+            "address": "123 fun st",
+            "description": "Fun times with fun people"
+        },
+        {
+            "id": 2,
+            "group": 1,
+            "group_name": "Best Buds",
+            "title": "Party at the Park",
+            "date": "05-23-2023",
+            "time": "6:00pm",
+            "address": "6 Paper 2t",
+            "description": "PARTY!"
+        },
+        {
+            "id": 3,
+            "group": 2,
+            "group_name": "Gal Pals",
+            "title": "Galentine's Day",
+            "date": "02-13-2024",
+            "time": "12:00pm",
+            "address": "49th st",
+            "description": "Hanging with Leslie, April, Ann, and Donna"
+        },
+        (etc.)
+    ]
 }
 ```
 
@@ -336,10 +305,10 @@ Response:
 
 ---
 
-### Get Friends
+### Get a Users' Friends
 
 ```http
-GET /api/v1/users/:user_id/friends
+GET /users/:user_id/friends
 ```
 
 <details close>
@@ -398,7 +367,7 @@ Response:
 ### Create Friend
 
 ```http
-POST /api/v1/users/:user_id/friends
+POST /users/:user_id/friends
 ```
 
 <details close>
@@ -449,10 +418,83 @@ Response:
 
 ---
 
-### Get one Group
+### Get all Groups
 
 ```http
-GET /api/v1/users/:user_id/groups/:group_id
+GET /groups/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+    
+Request: <br>
+```
+No Parameters
+```
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Best Buds",
+            "updated": "2023-05-23T23:35:10.294701Z",
+            "created": "2023-05-23T23:35:10.294724Z",
+            "user": 1,
+            "friends": [
+                1,
+                2,
+                (etc,)
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Gal Pals",
+            "updated": "2023-05-24T16:46:29.542505Z",
+            "created": "2023-05-24T16:46:29.542545Z",
+            "user": 1,
+            "friends": [
+                1,
+                2,
+                3,
+                (etc,)
+            ]
+        },
+        (etc,)
+    ]
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
+</details>
+
+### Get a Group
+
+```http
+GET /groups/:group_id
 ```
 
 <details close>
@@ -474,8 +516,16 @@ Response:
 
 {
     "data": {
-        "id": "1",
-        "user_id": "1"
+        "id": 1,
+        "name": "Best Buds",
+        "updated": "2023-05-23T23:35:10.294701Z",
+        "created": "2023-05-23T23:35:10.294724Z",
+        "user": 1,
+        "friends": [
+            1,
+            2,
+            (etc,)
+        ]
     }
 }
 ```
@@ -557,23 +607,23 @@ Response:
        <a href="https://github.com/WilliamLampke" rel="nofollow noreferrer">
             <img src="https://i.stack.imgur.com/tskMh.png" alt="github"> Github
       </a><br>
-        <a href="" rel="nofollow noreferrer">
+        <a href="https://www.linkedin.com/in/william-lampke-b4a5b5250/" rel="nofollow noreferrer">
           <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
       </a>
     </td>
   </tr>   
 </table>
 
+---
 ## Contact
 For any questions or suggestions, please open an issue in this repository.
-
----
 
 ## Contribute
 We're excited to welcome contributions from everyone, irrespective of their experience level. Your input is crucial in helping us make Lynk Up better. Let's collaborate and build a top-notch social event management app together!
 
 ## Licensing
-BLANK ON PURPOSE
+
+This project is intended to be open source. While a specific license has not been chosen yet, it is our intention to make the code and resources freely available for others to use, modify, and distribute. Until a license is selected, all rights to the code, documentation, and other project resources are reserved. Unauthorized use, distribution, or modification of any part of this project is prohibited.
 
 ---
 
