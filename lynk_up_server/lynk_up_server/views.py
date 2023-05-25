@@ -114,7 +114,7 @@ def event_detail(request, event_id):
 
 
 @api_view(['POST', 'GET', 'DELETE'])
-def add_friend(request, user_id):
+def friends(request, user_id):
   if request.method == 'GET':
     user = User.objects.get(id=user_id)
     serializer = FriendsListSerializer(user.added_friends(), many=True)
@@ -129,7 +129,6 @@ def add_friend(request, user_id):
 
       if friend not in user.added_friends():
         Friend.objects.create(user=user, friend=friend)
-
     except User.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)
     except IntegrityError:
@@ -139,7 +138,7 @@ def add_friend(request, user_id):
     return Response(
       {"data": {"friends":serializer.data}}, status=201, content_type='application/json'
     )
-  
+
   elif request.method == 'DELETE':
     try:
       user = User.objects.get(id=user_id)
@@ -153,6 +152,6 @@ def add_friend(request, user_id):
         return Response(status=status.HTTP_204_NO_CONTENT)
       else:
         return Response(status=status.HTTP_404_NOT_FOUND)
-      
+
     except User.DoesNotExist:
       return Response(status=status.HTTP_404_NOT_FOUND)

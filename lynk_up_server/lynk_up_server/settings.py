@@ -32,18 +32,19 @@ environ.Env.read_env()
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = 'RENDER' not in os.environ
+
 
 # Setting up environment distinguisher
 # https://pypi.org/project/python-decouple/#toc-entry-6:~:text=Retrieve%20the%20configuration%20parameters%3A
 
+# SECURITY WARNING: don't run with debug turned on in production!
 if config('DJANGO_ENV') == 'production':
   DEBUG = config('DEBUG')
 else:
   DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
+# DEBUG = 'RENDER' not in os.environ
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
@@ -141,7 +142,7 @@ REST_FRAMEWORK = {
 
 
 
-# Password validatigit 
+# Password validatigit
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
