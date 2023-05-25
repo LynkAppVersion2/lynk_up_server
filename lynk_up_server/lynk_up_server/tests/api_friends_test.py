@@ -24,7 +24,7 @@ def test_can_create_a_friendship(db):
     friend_id=user2.id
   )
   response = vars(client.post(f'/users/{user1.id}/friends/', payload))
-  content = bytes_to_dict(response, '_container')
+  content = bytes_to_json(response, '_container')
   assert response['status_code'] == 201
   assert 'data' in content
   assert isinstance(content['data'], dict)
