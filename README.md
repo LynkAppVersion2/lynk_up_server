@@ -1,16 +1,32 @@
-# Lynk Up Server
+<div id="header" align="center">
+  <img src="images/3578470E-FAA7-46ED-A5AF-285EDE7AFAC1_4_5005_c.jpeg" width="300px" height="200px"/>
+  <hr>
+</div>
 
 ## Introduction
 Welcome to the backend repository of Lynk Up! Lynk Up is a social event management app designed to streamline the organization, attendance, and management of events across different friend groups. This repository houses the codebase for our backend services, intricately crafted using Python and the Django REST framework.
 
 ---
 ## Table of Contents
-- [Directory](#directory) 
-- [About](#about) 
-- [Tech Stack](#tech-stack) 
+- [Introduction](#introduction)
+- [Table of Contents](#table-of-contents)
+- [Directory](#directory)
+- [About](#about)
+- [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
 - [Getting Started](#getting-started)
-- [Endpoints](#restful-endpoints)
+- [RESTful Endpoints](#restful-endpoints)
+  - [Get a User](#get-a-user)
+  - [Get an Event](#get-an-event)
+  - [Create Event](#create-event)
+  - [Delete Event](#delete-event)
+  - [Get all Events](#get-all-events)
+  - [Get a Users' Friends](#get-a-users-friends)
+  - [Create Friend](#create-friend)
+  - [Delete Friend](#delete-friend)
+  - [Get all Groups](#get-all-groups)
+  - [Get a Group](#get-a-group)
+  - [Delete Group](#delete-group)
 - [Team](#team)
 - [Contact](#contact)
 - [Contribute](#contribute)
@@ -61,7 +77,7 @@ GET /users/:user_id/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```
 No Parameters
@@ -129,7 +145,7 @@ GET /events/:event_id/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
 {
@@ -188,7 +204,7 @@ POST /events/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
     {
@@ -234,7 +250,7 @@ POST /events/:event_id/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
 {
@@ -252,7 +268,7 @@ Response:
 No Response
 ```
 
-Errors: 
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -351,7 +367,7 @@ GET /users/:user_id/friends/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```
 No Parameters
@@ -410,7 +426,7 @@ POST /users/:user_id/friends/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
 {
@@ -464,7 +480,7 @@ POST /users/:user_id/friends/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
 {
@@ -482,7 +498,7 @@ Response:
 No Response
 ```
 
-Errors: 
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -501,7 +517,7 @@ GET /groups/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```
 No Parameters
@@ -574,7 +590,7 @@ GET /groups/:group_id/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```
 No Parameters
@@ -633,7 +649,7 @@ POST /groups/:group_id/delete/
 <details close>
 <summary>  Details </summary>
 <br>
-    
+
 Request: <br>
 ```json
 {
@@ -651,7 +667,7 @@ Response:
 No Response
 ```
 
-Errors: 
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -671,7 +687,7 @@ Errors:
     <th>Harrison Ryan</th>
     <th>William Lampke</th>
   </tr>
-  
+
 <tr>
   <td><img src="https://avatars.githubusercontent.com/u/116662742?v=4" width="135" height="135"></td>
   <td><img src="https://avatars.githubusercontent.com/u/89714398?v=4" width="135" height="135"></td>
@@ -722,7 +738,7 @@ Errors:
           <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin"> LinkedIn
       </a>
     </td>
-  </tr>   
+  </tr>
 </table>
 
 ---
