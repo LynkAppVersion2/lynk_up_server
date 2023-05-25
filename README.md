@@ -55,7 +55,7 @@ https://lynk-up-server.onrender.com
 ### Get a User
 
 ```http
-GET users/:user_id
+GET /users/:user_id
 ```
 
 <details close>
@@ -123,7 +123,7 @@ Response:
 ### Get an Event
 
 ```http
-GET events/:event_id
+GET /events/:event_id
 ```
 
 <details close>
