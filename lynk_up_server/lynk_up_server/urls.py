@@ -21,7 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', views.user_list),
-    path('users/<int:user_id>', views.user_detail),
+    path('users/<int:user_id>/', views.user_detail),
     path('users/<int:user_id>/friends/', views.friends),
     # path('users/<int:user_id>/friends/<int:friend_id>/', views.delete_friend),
     path('groups/', views.group_list),
