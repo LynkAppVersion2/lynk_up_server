@@ -1,0 +1,59 @@
+[
+  {
+    "model": "lynk_up_server.group",
+    "pk": 1,
+    "fields": {
+      "name": "Game Night",
+      "user": 1,
+      "friends": [
+        2,
+        3
+      ],
+      "updated": "2023-06-16T12:00:00Z",
+      "created": "2023-06-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.group",
+    "pk": 2,
+    "fields": {
+      "name": "Friday Night Hangs",
+      "user": 1,
+      "friends": [
+        6,
+        7
+      ],
+      "updated": "2023-06-16T12:00:00Z",
+      "created": "2023-06-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.group",
+    "pk": 3,
+    "fields": {
+      "name": "Brunch",
+      "user": 2,
+      "friends": [
+        6,
+        8,
+        5
+      ],
+      "updated": "2023-05-16T12:00:00Z",
+      "created": "2023-05-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.group",
+    "pk": 4,
+    "fields": {
+      "name": "Roller Bladez",
+      "user": 2,
+      "friends": [
+        7,
+        5
+      ],
+      "updated": "2023-06-16T12:00:00Z",
+      "created": "2023-06-16T12:00:00Z"
+    }
+  }
+]

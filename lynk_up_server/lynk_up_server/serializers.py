@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
     ret = super().to_representation(instance)
     attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'events': ret['events']}
     new_representation = {
-        'id': ret['id'],
+        'id': str(ret['id']),
         'type': 'user',
         'attributes': attributes
     }
@@ -44,8 +44,8 @@ class FriendsListSerializer(serializers.ModelSerializer):
 
   def to_representation(self, instance):
     return {
-      'user_name': instance.user_name,
-      'user_id': instance.id
+      'user_id': str(instance.id),
+      'user_name': instance.user_name
     }
   class Meta:
     model = User
