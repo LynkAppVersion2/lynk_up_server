@@ -1,0 +1,72 @@
+[
+  {
+    "model": "lynk_up_server.event",
+    "pk": 1,
+    "fields": {
+      "group": 1,
+      "title": "Space Catan",
+      "date": "5/20/23",
+      "time": "8:00 PM",
+      "address": "123 Sesame St.",
+      "description": "It's a fun time, just come already",
+      "updated": "2023-02-16T12:00:00Z",
+      "created": "2023-02-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.event",
+    "pk": 2,
+    "fields": {
+      "group": 1,
+      "title": "Zombicide",
+      "date": "5/30/23",
+      "time": "8:00 PM",
+      "address": "123 Sesame St.",
+      "description": "Get over here, it'll be spooky",
+      "updated": "2023-02-16T12:00:00Z",
+      "created": "2023-02-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.event",
+    "pk": 3,
+    "fields": {
+      "group": 1,
+      "title": "Root",
+      "date": "6/3/23",
+      "time": "8:00 PM",
+      "address": "123 Sesame St.",
+      "description": "BYOB",
+      "updated": "2023-02-16T12:00:00Z",
+      "created": "2023-02-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.event",
+    "pk": 4,
+    "fields": {
+      "group": 2,
+      "title": "Going to the Movies",
+      "date": "6/1/23",
+      "time": "8:00 PM",
+      "address": "321 Candy Ln.",
+      "description": "Going to see the Mario movie",
+      "updated": "2023-01-16T12:00:00Z",
+      "created": "2023-01-16T12:00:00Z"
+    }
+  },
+  {
+    "model": "lynk_up_server.event",
+    "pk": 5,
+    "fields": {
+      "group": 2,
+      "title": "Renaissance Festival Afterparty",
+      "date": "6/7/23",
+      "time": "6:00 PM",
+      "address": "321 Candy Ln.",
+      "description": "Come to my place!",
+      "updated": "2023-03-16T12:00:00Z",
+      "created": "2023-03-16T12:00:00Z"
+    }
+  }
+]
