@@ -42,7 +42,9 @@ class FriendsListSerializer(serializers.ModelSerializer):
   def to_representation(self, instance):
     return {
       'user_id': instance.id,
-      'user_name': instance.user_name
+      'user_name': instance.user_name,
+      'full_name': instance.full_name,
+      'phone_number': instance.phone_number
     }
   class Meta:
     model = User
