@@ -9,18 +9,20 @@ class EventSerializer(serializers.ModelSerializer):
     fields = ('id', 'group', 'group_name', 'title', 'date', 'time', 'address', 'description')
   
   def get_group_name(self, obj):
+    import ipdb; ipdb.set_trace()
     return obj.group.name
 
 class UserSerializer(serializers.ModelSerializer):
   events = serializers.SerializerMethodField()
+  groups = serializers.SerializerMethodField()
 
   class Meta:
     model = User
-    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events')
+    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events', 'groups')
 
   def to_representation(self, instance):
     ret = super().to_representation(instance)
-    attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'events': ret['events']}
+    attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'events': ret['events'], 'groups': ret['groups']}
     new_representation = {
         'id': ret['id'],
         'type': 'user',
@@ -31,7 +33,13 @@ class UserSerializer(serializers.ModelSerializer):
   def get_events(self, obj):
     groups = Group.objects.filter(user=obj)
     events = Event.objects.filter(group__in=groups)
-    return EventSerializer(events, many=True).data
+    return EventsListSerializer(events, many=True).data
+  
+  def get_groups(self, obj):
+    group_objects = obj.groups.all()
+    group_ids = [group.id for group in group_objects]
+    groups = Group.objects.filter(id__in=group_ids)
+    return GroupsListSerializer(groups, many=True).data 
 
 class GroupSerializer(serializers.ModelSerializer):
   friends = serializers.SerializerMethodField()
@@ -61,7 +69,7 @@ class GroupSerializer(serializers.ModelSerializer):
     event_objects = obj.events.all()
     event_ids = [event.id for event in event_objects]
     events = Event.objects.filter(id__in=event_ids)
-    return EventSerializer(events, many=True).data
+    return EventsListSerializer(events, many=True).data
 
 class FriendsListSerializer(serializers.ModelSerializer):
   class Meta:
@@ -75,3 +83,18 @@ class FriendsListSerializer(serializers.ModelSerializer):
       'full_name': instance.full_name,
       'phone_number': instance.phone_number
     }
+  
+class GroupsListSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Group
+    fields = ('id', 'name')
+
+class EventsListSerializer(serializers.ModelSerializer):
+  group_name = serializers.SerializerMethodField()
+
+  class Meta:
+    model = Event
+    fields = ('id', 'group', 'group_name', 'title', 'date', 'time')
+
+  def get_group_name(self, obj):
+    return obj.group.name

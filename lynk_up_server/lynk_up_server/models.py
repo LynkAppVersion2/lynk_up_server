@@ -30,7 +30,7 @@ class Friend(models.Model):
 
 
 class Group(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='groups')
   friends = models.ManyToManyField(Friend)
   name = models.CharField(max_length=40)
 
