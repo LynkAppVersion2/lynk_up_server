@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
     ret = super().to_representation(instance)
     attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'events': ret['events']}
     new_representation = {
-        'id': str(ret['id']),
+        'id': ret['id'],
         'type': 'user',
         'attributes': attributes
     }
@@ -39,12 +39,9 @@ class GroupSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
 class FriendsListSerializer(serializers.ModelSerializer):
-  user_name = serializers.CharField(source='user.user_name')
-  user_id = serializers.IntegerField(source='user.id')
-
   def to_representation(self, instance):
     return {
-      'user_id': str(instance.id),
+      'user_id': instance.id,
       'user_name': instance.user_name
     }
   class Meta:
