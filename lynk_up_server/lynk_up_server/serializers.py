@@ -34,11 +34,34 @@ class UserSerializer(serializers.ModelSerializer):
     return EventSerializer(events, many=True).data
 
 class GroupSerializer(serializers.ModelSerializer):
+  friends = serializers.SerializerMethodField()
+
   class Meta:
     model = Group
-    fields = '__all__'
+    # fields = '__all__'
+    fields = ('id', 'user_id', 'name', 'friends')
+  
+  def to_representation(self, instance):
+    ret = super().to_representation(instance)
+    attributes = {'host': ret['user_id'], 'name': ret['name'], 'friends': ret['friends']}
+
+    return{
+      'id': ret['id'],
+      'type': 'group',
+      'attributes': attributes
+    }
+  
+  def get_friends(self, obj):
+    friends = obj.friends.all()
+    friend_ids = [friend.friend_id for friend in friends]
+    users = User.objects.filter(id__in=friend_ids)
+    return FriendsListSerializer(users, many=True).data 
 
 class FriendsListSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = '__all__'
+
   def to_representation(self, instance):
     return {
       'user_id': instance.id,
@@ -46,6 +69,3 @@ class FriendsListSerializer(serializers.ModelSerializer):
       'full_name': instance.full_name,
       'phone_number': instance.phone_number
     }
-  class Meta:
-    model = User
-    fields = '__all__'
