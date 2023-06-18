@@ -35,15 +35,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 class GroupSerializer(serializers.ModelSerializer):
   friends = serializers.SerializerMethodField()
+  events = serializers.SerializerMethodField()
 
   class Meta:
     model = Group
-    # fields = '__all__'
-    fields = ('id', 'user_id', 'name', 'friends')
+    fields = ('id', 'user_id', 'name', 'friends', 'events')
   
   def to_representation(self, instance):
     ret = super().to_representation(instance)
-    attributes = {'host': ret['user_id'], 'name': ret['name'], 'friends': ret['friends']}
+    attributes = {'host': ret['user_id'], 'name': ret['name'], 'friends': ret['friends'], 'events': ret['events']}
 
     return{
       'id': ret['id'],
@@ -56,6 +56,12 @@ class GroupSerializer(serializers.ModelSerializer):
     friend_ids = [friend.friend_id for friend in friends]
     users = User.objects.filter(id__in=friend_ids)
     return FriendsListSerializer(users, many=True).data 
+  
+  def get_events(self, obj):
+    event_objects = obj.events.all()
+    event_ids = [event.id for event in event_objects]
+    events = Event.objects.filter(id__in=event_ids)
+    return EventSerializer(events, many=True).data
 
 class FriendsListSerializer(serializers.ModelSerializer):
   class Meta:
