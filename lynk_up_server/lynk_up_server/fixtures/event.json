@@ -5,7 +5,7 @@
     "fields": {
       "group": 1,
       "title": "Space Catan",
-      "date": "5/20/23",
+      "date": "05-20-23",
       "time": "8:00 PM",
       "address": "123 Sesame St.",
       "description": "It's a fun time, just come already",
@@ -19,7 +19,7 @@
     "fields": {
       "group": 1,
       "title": "Zombicide",
-      "date": "5/30/23",
+      "date": "05-30-23",
       "time": "8:00 PM",
       "address": "123 Sesame St.",
       "description": "Get over here, it'll be spooky",
@@ -33,7 +33,7 @@
     "fields": {
       "group": 1,
       "title": "Root",
-      "date": "6/3/23",
+      "date": "06-03-23",
       "time": "8:00 PM",
       "address": "123 Sesame St.",
       "description": "BYOB",
@@ -47,7 +47,7 @@
     "fields": {
       "group": 2,
       "title": "Going to the Movies",
-      "date": "6/1/23",
+      "date": "06-01-23",
       "time": "8:00 PM",
       "address": "321 Candy Ln.",
       "description": "Going to see the Mario movie",
@@ -61,7 +61,7 @@
     "fields": {
       "group": 2,
       "title": "Renaissance Festival Afterparty",
-      "date": "6/7/23",
+      "date": "06-07-23",
       "time": "6:00 PM",
       "address": "321 Candy Ln.",
       "description": "Come to my place!",
