@@ -9,7 +9,6 @@ class EventSerializer(serializers.ModelSerializer):
     fields = ('id', 'group', 'group_name', 'title', 'date', 'time', 'address', 'description')
   
   def get_group_name(self, obj):
-    import ipdb; ipdb.set_trace()
     return obj.group.name
 
 class UserSerializer(serializers.ModelSerializer):
