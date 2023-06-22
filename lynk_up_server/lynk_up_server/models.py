@@ -17,6 +17,9 @@ class User(models.Model):
   def accepted_friend(self):
     return [friend.user for friend in Friend.objects.filter(friend=self)]
   
+  def events(self):
+    return Event.objects.filter(group__in=self.groups.all())
+  
 
 class Friend(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -39,6 +42,9 @@ class Group(models.Model):
 
   def __str__(self):
     return self.name
+  
+  def friends_list(self):
+    return User.objects.filter(id__in=self.friends.values('friend_id'))
 
 class Event(models.Model):
   group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='events')
