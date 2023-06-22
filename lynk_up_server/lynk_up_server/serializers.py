@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import User, Friend, Group, Event
-from django.db.models import Q
 
 class EventSerializer(serializers.ModelSerializer):
   group_name = serializers.SerializerMethodField()
