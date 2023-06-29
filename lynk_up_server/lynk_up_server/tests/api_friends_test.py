@@ -21,7 +21,7 @@ def test_can_create_a_friendship(db):
   # url = f'/users/{user1.id}/friends/'
   # response = vars(requests.post(url, data={'friend_id': user2.id}))
   payload = dict(
-    friend_id=user2.id
+    friend=user2.id
   )
   response = vars(client.post(f'/users/{user1.id}/friends/', payload))
   content = bytes_to_json(response, '_container')
