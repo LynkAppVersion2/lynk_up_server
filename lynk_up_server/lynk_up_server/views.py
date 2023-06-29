@@ -130,7 +130,7 @@ def friends(request, user_id):
     accepted_friends = user.accepted_friends()
     all_friends = added_friends + accepted_friends
     sorted_friends = sorted(all_friends, key=attrgetter('full_name'))
-    
+
     serializer = FriendsListSerializer(sorted_friends, many=True)
     return Response(
       {"data": {"friends":serializer.data}}, status=200, content_type='application/json'
@@ -165,7 +165,6 @@ def friend_detail(request, user_id, friend_id):
     return Response({"data": serializer.data})
 
   elif request.method == 'DELETE':
-    import ipdb; ipdb.set_trace()
     user = User.objects.get(id=user_id)
     friend = User.objects.get(id=friend_id)
     friendship = Friend.objects.filter(user=user, friend=friend).first()
