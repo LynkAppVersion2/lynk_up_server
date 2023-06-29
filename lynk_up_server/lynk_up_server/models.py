@@ -14,11 +14,22 @@ class User(models.Model):
   def added_friends(self):
     return [friend.friend for friend in Friend.objects.filter(user=self)]
 
-  def accepted_friend(self):
+  def accepted_friends(self):
     return [friend.user for friend in Friend.objects.filter(friend=self)]
   
-  def events(self):
-    return Event.objects.filter(group__in=self.groups.all())
+  def my_groups(self):
+    return self.groups.all()
+
+  def included_in_groups(self):
+      return Group.objects.filter(
+          friends__friend_id__in=Friend.objects.filter(friend=self).values('friend_id')
+      )
+
+  def my_events(self):
+      return Event.objects.filter(group__in=self.my_groups())
+
+  def invited_to_events(self):
+      return Event.objects.filter(group__in=self.included_in_groups())
   
 
 class Friend(models.Model):
