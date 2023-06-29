@@ -40,29 +40,8 @@ class EventsListSerializer(serializers.ModelSerializer):
 
   def get_group_name(self, obj):
     return obj.group.name
-  
-# class GroupSerializer(serializers.ModelSerializer):
-#   friends_list = FriendsListSerializer(many=True, required=False)
-#   events = EventsListSerializer(many=True, read_only=True)
 
-#   class Meta:
-#     model = Group
-#     fields = ('id', 'user_id', 'name', 'friends_list', 'events')
 
-#   def to_representation(self, instance):
-#     ret = super().to_representation(instance)
-#     attributes = {'host': ret['user_id'], 'name': ret['name'], 'friends': ret['friends_list'], 'events': ret['events']}
-
-#     return{
-#       'id': ret['id'],
-#       'type': 'group',
-#       'attributes': attributes
-#     }
-  
-
-# --------------------------
-# LATEST V
-# --------------------------
 class GroupSerializer(serializers.ModelSerializer):
   friends_list = serializers.SerializerMethodField()
   events = serializers.SerializerMethodField()
@@ -82,8 +61,7 @@ class GroupSerializer(serializers.ModelSerializer):
       }
 
   def get_friends_list(self, instance):
-      friends = instance.friends.values('friend_id', 'friend__full_name', 'friend__phone_number')
-      modified_friends = []
+      friends = instance.friends_list()
 
       if self.context:
         friends_data = self.initial_data.get('friends_list', [])
@@ -92,33 +70,11 @@ class GroupSerializer(serializers.ModelSerializer):
           friend = Friend.objects.get(friend_id=friend_id)
           instance.friends.add(friend)
 
-
-      for friend in friends:
-        modified_friend = {
-          'friend_id': friend['friend_id'],
-          'friend_name': friend['friend__full_name'],
-          'phone_number': friend['friend__phone_number']
-        }
-        modified_friends.append(modified_friend)
-      return modified_friends
+      return FriendsListSerializer(friends, many=True, read_only=True).data
 
   def get_events(self, instance):
-      events = instance.events.values('id', 'group_id', 'group__name', 'time', 'title')
-      modified_events = []
-
-      for event in events:
-        modified_event = {
-          'event_id': event['id'],
-          'group_id': event['group_id'],
-          'group_name': event['group__name'],
-          'title': event['title'],
-          'time': event['time']
-        }
-        modified_events.append(modified_event)
-      return modified_events
-# --------------------------
-# LATEST ^
-# --------------------------
+      events = instance.events
+      return EventsListSerializer(events, many=True, read_only=True).data
 
 class UserSerializer(serializers.ModelSerializer):
   events = EventsListSerializer(many=True)
