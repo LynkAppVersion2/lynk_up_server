@@ -73,7 +73,7 @@ def group_detail(request, group_id):
     return Response({"data": serializer.data})
   
   elif request.method == 'PUT':
-    serializer = GroupSerializer(group, data=request.data, context={'request_method': 'PUT'})
+    serializer = GroupSerializer(group, data=request.data)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
