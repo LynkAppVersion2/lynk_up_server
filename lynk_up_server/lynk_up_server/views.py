@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
+from operator import attrgetter
 
 
 @api_view(['GET', 'POST'])
@@ -125,7 +126,12 @@ def event_detail(request, event_id):
 def friends(request, user_id):
   if request.method == 'GET':
     user = User.objects.get(id=user_id)
-    serializer = FriendsListSerializer(user.added_friends(), many=True)
+    added_friends = user.added_friends()
+    accepted_friends = user.accepted_friends()
+    all_friends = added_friends + accepted_friends
+    sorted_friends = sorted(all_friends, key=attrgetter('full_name'))
+    
+    serializer = FriendsListSerializer(sorted_friends, many=True)
     return Response(
       {"data": {"friends":serializer.data}}, status=200, content_type='application/json'
     )
