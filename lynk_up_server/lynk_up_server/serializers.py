@@ -77,16 +77,18 @@ class GroupSerializer(serializers.ModelSerializer):
       return EventsListSerializer(events, many=True, read_only=True).data
 
 class UserSerializer(serializers.ModelSerializer):
-  events = EventsListSerializer(many=True)
-  groups = GroupsListSerializer(many=True)
+  my_events = EventsListSerializer(many=True)
+  invited_to_events = EventsListSerializer(many=True)
+  my_groups = GroupsListSerializer(many=True)
+  included_in_groups = GroupsListSerializer(many=True)
 
   class Meta:
     model = User
-    fields = ('id', 'user_name', 'phone_number', 'full_name', 'events', 'groups')
+    fields = ('id', 'user_name', 'phone_number', 'full_name', 'my_events', 'invited_to_events', 'my_groups', 'included_in_groups')
 
   def to_representation(self, instance):
     ret = super().to_representation(instance)
-    attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'events': ret['events'], 'groups': ret['groups']}
+    attributes = {'user_name': ret['user_name'], 'phone_number': ret['phone_number'], 'full_name': ret['full_name'], 'my_events': ret['my_events'], 'invited_to_events': ret['invited_to_events'], 'my_groups': ret['my_groups'], 'included_in_groups': ret['included_in_groups']}
     new_representation = {
         'id': ret['id'],
         'type': 'user',

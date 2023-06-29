@@ -17,8 +17,8 @@ def test_create_friend(db):
     assert friendship2.friend == user3
 
     assert user1.added_friends() == [user2, user3]
-    assert user2.accepted_friend() == [user1]
-    assert user3.accepted_friend() == [user1]
+    assert user2.accepted_friends() == [user1]
+    assert user3.accepted_friends() == [user1]
 
 
 
