@@ -52,7 +52,7 @@ class GroupSerializer(serializers.ModelSerializer):
 
   def to_representation(self, instance):
       ret = super().to_representation(instance)
-      attributes = {'group_host_id': ret['user'], 'group_name': ret['name'], 'group_friends': ret['friends_list'], 'group_events': ret['events']}
+      attributes = {'group_host_id': ret['user'], 'group_host_name': instance.user.full_name, 'group_name': ret['name'], 'group_friends': ret['friends_list'], 'group_events': ret['events']}
 
       return {
           'id': ret['id'],
