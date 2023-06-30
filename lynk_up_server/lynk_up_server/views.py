@@ -62,7 +62,7 @@ def group_list(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def group_detail(request, group_id):
   try:
     group = Group.objects.get(pk=group_id)
@@ -73,8 +73,8 @@ def group_detail(request, group_id):
     serializer = GroupSerializer(group)
     return Response({"data": serializer.data})
   
-  elif request.method == 'PUT':
-    serializer = GroupSerializer(group, data=request.data)
+  elif request.method == 'PATCH':
+    serializer = GroupSerializer(group, data=request.data, partial=True, context={'request_method': 'PATCH'})
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
@@ -129,9 +129,8 @@ def friends(request, user_id):
     added_friends = user.added_friends()
     accepted_friends = user.accepted_friends()
     all_friends = added_friends + accepted_friends
-    sorted_friends = sorted(all_friends, key=attrgetter('full_name'))
 
-    serializer = FriendsListSerializer(sorted_friends, many=True)
+    serializer = FriendsListSerializer(all_friends, many=True)
     return Response(
       {"data": {"friends":serializer.data}}, status=200, content_type='application/json'
     )

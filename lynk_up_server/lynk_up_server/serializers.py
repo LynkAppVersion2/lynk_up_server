@@ -67,8 +67,15 @@ class GroupSerializer(serializers.ModelSerializer):
         friends_data = self.initial_data.get('friends_list', [])
         for friend_data in friends_data:
           friend_id = friend_data.get('friend_id')
-          friend = Friend.objects.get(friend_id=friend_id)
-          instance.friends.add(friend)
+          added_friend = Friend.objects.filter(friend_id=friend_id, user_id=instance.user.id)
+          accepted_friend = Friend.objects.filter(user_id=friend_id, friend_id=instance.user.id)
+
+          if added_friend.exists():
+            for friend in added_friend:
+              instance.friends.add(friend)
+          if accepted_friend.exists():
+            for friend in accepted_friend:
+              instance.friends.add(friend)
 
       return FriendsListSerializer(friends, many=True, read_only=True).data
 
