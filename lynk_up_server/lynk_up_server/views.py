@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
-from operator import attrgetter
 
 
 @api_view(['GET', 'POST'])
@@ -99,7 +98,7 @@ def event_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def event_detail(request, event_id):
   try:
     event = Event.objects.get(pk=event_id)
@@ -110,8 +109,8 @@ def event_detail(request, event_id):
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
 
-  elif request.method == 'PUT':
-    serializer = EventSerializer(event, data=request.data)
+  elif request.method == 'PATCH':
+    serializer = EventSerializer(event, data=request.data, partial=True)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
