@@ -76,6 +76,9 @@ class GroupSerializer(serializers.ModelSerializer):
           if accepted_friend.exists():
             for friend in accepted_friend:
               instance.friends.add(friend)
+          # later: if added_friend.exists() and accepted_friend.exists():
+            # instance.friends.add(friend)
+            # explanation: will only want the ability to add a friend to a group / event if they have accepted the friend request
 
       return FriendsListSerializer(friends, many=True, read_only=True).data
 
