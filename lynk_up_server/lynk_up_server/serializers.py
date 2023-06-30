@@ -3,14 +3,34 @@ from .models import User, Friend, Group, Event
 
 class EventSerializer(serializers.ModelSerializer):
   group_name = serializers.SerializerMethodField()
+  host_id = serializers.SerializerMethodField()
+  host_name = serializers.SerializerMethodField()
+  invited = serializers.SerializerMethodField()
 
   class Meta:
     model = Event
-    fields = ('id', 'group', 'group_name', 'title', 'date', 'time', 'address', 'description')
+    fields = ('id', 'group', 'group_name', 'host_id', 'host_name', 'title', 'date', 'time', 'address', 'description', 'invited')
   
   def get_group_name(self, obj):
     return obj.group.name
   
+  def get_host_id(self, obj):
+    return obj.group.user.id
+  
+  def get_host_name(self, obj):
+    return obj.group.user.full_name
+  
+  def get_invited(self, obj):
+    friendships = obj.group.friends.all()
+    user = obj.group.user
+    list1 = friendships.filter(user=user)
+    list2 = friendships.filter(friend=user)
+    friends1 = [friend.friend for friend in list1]
+    friends2 = [user.friend for user in list2]
+    all_friends = friends1 + friends2
+    return FriendsListSerializer(all_friends, many=True, read_only=True).data
+  
+
 class FriendsListSerializer(serializers.ModelSerializer):
 
   class Meta:
@@ -30,6 +50,7 @@ class GroupsListSerializer(serializers.ModelSerializer):
   class Meta:
     model = Group
     fields = ('id', 'name')
+
 
 class EventsListSerializer(serializers.ModelSerializer):
   group_name = serializers.SerializerMethodField()
@@ -85,6 +106,7 @@ class GroupSerializer(serializers.ModelSerializer):
   def get_events(self, instance):
       events = instance.events
       return EventsListSerializer(events, many=True, read_only=True).data
+  
 
 class UserSerializer(serializers.ModelSerializer):
   my_events = EventsListSerializer(many=True)
