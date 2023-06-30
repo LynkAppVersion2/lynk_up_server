@@ -22,13 +22,9 @@ class EventSerializer(serializers.ModelSerializer):
   
   def get_invited(self, obj):
     friendships = obj.group.friends.all()
-    user = obj.group.user
-    list1 = friendships.filter(user=user)
-    list2 = friendships.filter(friend=user)
-    friends1 = [friend.friend for friend in list1]
-    friends2 = [user.friend for user in list2]
-    all_friends = friends1 + friends2
-    return FriendsListSerializer(all_friends, many=True, read_only=True).data
+    invited_users = friendships.values('friend')
+    friends = User.objects.filter(id__in=invited_users)
+    return FriendsListSerializer(friends, many=True).data
   
 
 class FriendsListSerializer(serializers.ModelSerializer):
