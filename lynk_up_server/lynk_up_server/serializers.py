@@ -43,9 +43,14 @@ class FriendsListSerializer(serializers.ModelSerializer):
   
   
 class GroupsListSerializer(serializers.ModelSerializer):
+  member_count = serializers.SerializerMethodField()
+
   class Meta:
     model = Group
-    fields = ('id', 'name')
+    fields = ('id', 'name', 'member_count')
+
+  def get_member_count(self, obj):
+    return len(obj.friends.all())
 
 
 class EventsListSerializer(serializers.ModelSerializer):
