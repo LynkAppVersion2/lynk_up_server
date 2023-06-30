@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db import IntegrityError
 from django.views.decorators.http import require_http_methods
-from operator import attrgetter
 
 
 @api_view(['GET', 'POST'])
@@ -24,7 +23,7 @@ def user_list(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT' 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def user_detail(request, user_id):
   try:
     user = User.objects.get(pk=user_id)
@@ -34,9 +33,9 @@ def user_detail(request, user_id):
   if request.method == 'GET':
     serializer = UserSerializer(user)
     return Response({"data": serializer.data})
-  
-  elif request.method == 'PUT':
-    serializer = UserSerializer(user, data=request.data)
+
+  elif request.method == 'PATCH':
+    serializer = UserSerializer(user, data=request.data, partial=True)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
@@ -62,7 +61,7 @@ def group_list(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
   
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def group_detail(request, group_id):
   try:
     group = Group.objects.get(pk=group_id)
@@ -73,8 +72,8 @@ def group_detail(request, group_id):
     serializer = GroupSerializer(group)
     return Response({"data": serializer.data})
   
-  elif request.method == 'PUT':
-    serializer = GroupSerializer(group, data=request.data)
+  elif request.method == 'PATCH':
+    serializer = GroupSerializer(group, data=request.data, partial=True, context={'request_method': 'PATCH'})
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
@@ -99,7 +98,7 @@ def event_list(request):
       return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
+@api_view(['GET', 'PATCH', 'DELETE'])
 def event_detail(request, event_id):
   try:
     event = Event.objects.get(pk=event_id)
@@ -110,8 +109,8 @@ def event_detail(request, event_id):
     serializer = EventSerializer(event)
     return Response({"data": serializer.data})
 
-  elif request.method == 'PUT':
-    serializer = EventSerializer(event, data=request.data)
+  elif request.method == 'PATCH':
+    serializer = EventSerializer(event, data=request.data, partial=True)
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data)
@@ -129,9 +128,8 @@ def friends(request, user_id):
     added_friends = user.added_friends()
     accepted_friends = user.accepted_friends()
     all_friends = added_friends + accepted_friends
-    sorted_friends = sorted(all_friends, key=attrgetter('full_name'))
 
-    serializer = FriendsListSerializer(sorted_friends, many=True)
+    serializer = FriendsListSerializer(all_friends, many=True)
     return Response(
       {"data": {"friends":serializer.data}}, status=200, content_type='application/json'
     )
