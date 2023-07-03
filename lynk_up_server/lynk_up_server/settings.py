@@ -118,6 +118,7 @@ else:
 REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES': (
              'rest_framework.authentication.BasicAuthentication',
+
         )}
 
 # if __name__ == "__main__":

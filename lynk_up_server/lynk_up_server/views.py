@@ -54,7 +54,7 @@ def group_list(request):
     return Response({"data": serializer.data})
   
   elif request.method == 'POST':
-    serializer = GroupSerializer(data=request.data, context={'request_method': 'PUT'})
+    serializer = GroupSerializer(data=request.data, context={'request_method': 'POST'})
     if serializer.is_valid():
       serializer.save()
       return Response(serializer.data, status=status.HTTP_201_CREATED)

@@ -83,25 +83,24 @@ class GroupSerializer(serializers.ModelSerializer):
       }
 
   def get_friends_list(self, instance):
-      friends = instance.friends_list()
 
       if self.context:
         friends_data = self.initial_data.get('friends_list', [])
         for friend_data in friends_data:
           friend_id = friend_data.get('friend_id')
-          added_friend = Friend.objects.filter(friend_id=friend_id, user_id=instance.user.id)
-          accepted_friend = Friend.objects.filter(user_id=friend_id, friend_id=instance.user.id)
+          added_friends = Friend.objects.filter(friend_id=friend_id, user_id=instance.user.id)
+          accepted_friends = Friend.objects.filter(user_id=friend_id, friend_id=instance.user.id)
 
-          if added_friend.exists():
-            for friend in added_friend:
-              instance.friends.add(friend)
-          if accepted_friend.exists():
-            for friend in accepted_friend:
-              instance.friends.add(friend)
+          if added_friends.exists():
+              instance.friends.add(*added_friends)
+          if accepted_friends.exists():
+              instance.friends.add(*accepted_friends)
+              
           # later: if added_friend.exists() and accepted_friend.exists():
             # instance.friends.add(friend)
             # explanation: will only want the ability to add a friend to a group / event if they have accepted the friend request
 
+      friends = instance.friends_list()
       return FriendsListSerializer(friends, many=True, read_only=True).data
 
   def get_events(self, instance):
