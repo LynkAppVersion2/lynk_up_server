@@ -186,7 +186,7 @@ pytest
 <details>
 <summary>
   
-### Users
+> ### Users
 </summary>
 
 
@@ -440,7 +440,7 @@ Response:
 <details>
 <summary>
   
-### Friends
+> ### Friends
 </summary>
 
 ### Get all Friends for a User
@@ -598,227 +598,12 @@ Errors:
 ---
 </details>
 
-### Get an Event
 
-```http
-GET /events/:event_id/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```json
-{
-    "event_id": 1
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 200 | `OK` |
-
-Response:
-
-```json
-
-{
-    "data": {
-        "id": 1,
-        "group": 1,
-        "group_name": "Best Buds",
-        "title": "Magic Tournament",
-        "date": "05-23-2023",
-        "time": "7:00pm",
-        "address": "123 fun st",
-        "description": "Fun times with fun people"
-    }
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 404 | `NOT FOUND` |
-
-Response:
-
-```json
-
-{
-    "error": [
-        "title": "NOT FOUND",
-        "status": "404"
-    ]
-}
-```
-
-</details>
-
----
-
-### Create Event
-
-```http
-POST /events/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```json
-    {
-        "title": "Party at the Park",
-        "date": "05-23-2023",
-        "time": "6:00pm",
-        "address": "6 Paper st",
-        "description": "PARTY!",
-        "group": 1
-    }
-```
-
-| Code | Description |
-| :--- | :--- |
-| 201 | `Created` |
-
-Response:
-
-```json
-
-{
-    "id": 2,
-    "group": 1,
-    "group_name": "Best Buds",
-    "title": "Party at the Park",
-    "date": "05-23-2023",
-    "time": "6:00pm",
-    "address": "6 Paper st",
-    "description": "PARTY!"
-}
-```
-
-</details>
-
----
-
-### Delete Event
-
-```http
-POST /events/:event_id/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```json
-{
-    "event_id": 1,
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 204 | `NO CONTENT` |
-
-Response:
-
-```
-No Response
-```
-
-Errors:
-
-| Code | Description |
-| :--- | :--- |
-| 404 | `NOT FOUND` |
-
-</details>
-
----
-
-### Get all Events
-
-```http
-GET /events/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```
-No Parameters
-```
-
-| Code | Description |
-| :--- | :--- |
-| 200 | `OK` |
-
-Response:
-
-```json
-
-{
-    "data": [
-        {
-            "id": 1,
-            "group": 1,
-            "group_name": "Best Buds",
-            "title": "Magic Tournament",
-            "date": "05-23-2023",
-            "time": "7:00pm",
-            "address": "123 fun st",
-            "description": "Fun times with fun people"
-        },
-        {
-            "id": 2,
-            "group": 1,
-            "group_name": "Best Buds",
-            "title": "Party at the Park",
-            "date": "05-23-2023",
-            "time": "6:00pm",
-            "address": "6 Paper 2t",
-            "description": "PARTY!"
-        },
-        {
-            "id": 3,
-            "group": 2,
-            "group_name": "Gal Pals",
-            "title": "Galentine's Day",
-            "date": "02-13-2024",
-            "time": "12:00pm",
-            "address": "49th st",
-            "description": "Hanging with Leslie, April, Ann, and Donna"
-        },
-        (etc.)
-    ]
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 404 | `NOT FOUND` |
-
-Response:
-
-```json
-
-{
-    "error": [
-        "title": "NOT FOUND",
-        "status": "404"
-    ]
-}
-```
-
-</details>
-
----
+<details>
+<summary>
+  
+> ### Groups
+</summary>
 
 ### Get all Groups
 
@@ -986,6 +771,227 @@ Errors:
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
+
+</details>
+
+### Get an Event
+
+```http
+GET /events/:event_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "event_id": 1
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": {
+        "id": 1,
+        "group": 1,
+        "group_name": "Best Buds",
+        "title": "Magic Tournament",
+        "date": "05-23-2023",
+        "time": "7:00pm",
+        "address": "123 fun st",
+        "description": "Fun times with fun people"
+    }
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
+</details>
+</details>
+
+---
+
+### Create Event
+
+```http
+POST /events/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+    {
+        "title": "Party at the Park",
+        "date": "05-23-2023",
+        "time": "6:00pm",
+        "address": "6 Paper st",
+        "description": "PARTY!",
+        "group": 1
+    }
+```
+
+| Code | Description |
+| :--- | :--- |
+| 201 | `Created` |
+
+Response:
+
+```json
+
+{
+    "id": 2,
+    "group": 1,
+    "group_name": "Best Buds",
+    "title": "Party at the Park",
+    "date": "05-23-2023",
+    "time": "6:00pm",
+    "address": "6 Paper st",
+    "description": "PARTY!"
+}
+```
+
+</details>
+
+---
+
+### Delete Event
+
+```http
+POST /events/:event_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "event_id": 1,
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 204 | `NO CONTENT` |
+
+Response:
+
+```
+No Response
+```
+
+Errors:
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+</details>
+
+---
+
+### Get all Events
+
+```http
+GET /events/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```
+No Parameters
+```
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": [
+        {
+            "id": 1,
+            "group": 1,
+            "group_name": "Best Buds",
+            "title": "Magic Tournament",
+            "date": "05-23-2023",
+            "time": "7:00pm",
+            "address": "123 fun st",
+            "description": "Fun times with fun people"
+        },
+        {
+            "id": 2,
+            "group": 1,
+            "group_name": "Best Buds",
+            "title": "Party at the Park",
+            "date": "05-23-2023",
+            "time": "6:00pm",
+            "address": "6 Paper 2t",
+            "description": "PARTY!"
+        },
+        {
+            "id": 3,
+            "group": 2,
+            "group_name": "Gal Pals",
+            "title": "Galentine's Day",
+            "date": "02-13-2024",
+            "time": "12:00pm",
+            "address": "49th st",
+            "description": "Hanging with Leslie, April, Ann, and Donna"
+        },
+        (etc.)
+    ]
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
 
 </details>
 </details>
