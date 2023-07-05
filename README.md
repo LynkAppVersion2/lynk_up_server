@@ -122,7 +122,7 @@ pytest
 
 ### If everything's green, you're good to go!
 
-<details>
+</details>
 <br>
 
 -----------------------------
