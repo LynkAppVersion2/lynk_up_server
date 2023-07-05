@@ -436,6 +436,12 @@ Response:
 
 ---
 
+<details>
+<summary>
+  
+### Friends
+</summary>
+
 ### Get all Friends for a User
 
 ```http
@@ -587,6 +593,7 @@ Errors:
 | 404 | `NOT FOUND` |
 
 </details>
+</details>details>
 
 ---
 
