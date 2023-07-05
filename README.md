@@ -34,7 +34,6 @@ cd lynk_up_server
 ```shell
 run python3 -m venv .venv
 ```
-<br>
 
 ```shell
 run . .venv/bin/activate
