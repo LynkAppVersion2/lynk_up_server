@@ -99,17 +99,14 @@ run python manage.py migrate
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/user.json
 ```
-<br>
 
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/friend.json
 ```
-<br>
 
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/group.json
 ```
-<br>
 
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/event.json
@@ -125,7 +122,7 @@ run pytest
 If everything's green, you're good to go!
 
 <br>
----
+<br>
 
 
 ## RESTful Endpoints
