@@ -593,7 +593,7 @@ Errors:
 | 404 | `NOT FOUND` |
 
 </details>
-</details>details>
+</details>
 
 ---
 
