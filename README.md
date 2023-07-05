@@ -337,6 +337,8 @@ Response:
 }
 ```
 
+Errors:
+
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
@@ -417,6 +419,8 @@ Response:
     }
 }
 ```
+
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -545,6 +549,8 @@ Response:
 }
 ```
 
+Errors:
+
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
@@ -615,6 +621,8 @@ Response:
     }
 }
 ```
+
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -795,6 +803,8 @@ Response:
 }
 ```
 
+Errors:
+
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
@@ -876,6 +886,8 @@ Response:
 }
 ```
 
+Errors:
+
 | Code | Description |
 | :--- | :--- |
 | 400 | `BAD REQUEST` |
@@ -940,6 +952,8 @@ Response:
     }
 }
 ```
+
+Errors:
 
 | Code | Description |
 | :--- | :--- |
@@ -1107,6 +1121,8 @@ Response:
     }
 }
 ```
+
+Errors:
 
 | Code | Description |
 | :--- | :--- |
