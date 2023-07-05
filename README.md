@@ -40,15 +40,24 @@ To ensure a seamless experience setting up our backend repository, please adhere
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
 </details>
-<br>
+
+<details>
+<summary> 
 
 ### 2. Navigate to the directory
+</summary>
+
 ```shell
 cd lynk_up_server
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 3. Create Virtual Environment
+</summary>
+
 ```shell
 python3 -m venv .venv
 ```
@@ -56,9 +65,14 @@ python3 -m venv .venv
 ```shell
 . .venv/bin/activate
 ```
-<br>
+</details>
+
+<details>
+<summary> 
 
 ### 4. Select Interpreter
+</summary>
+
 ```shell
 cmd + shift + P
 ```
@@ -66,9 +80,14 @@ cmd + shift + P
 ```shell
 Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 5. Create Environment for Keys
+</summary>
+
 ```shell
 touch .env
 ```
@@ -80,9 +99,14 @@ touch .env
 DEBUG=True
 DJANGO_ENV=development
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 6. Install Packages
+</summary>
+
 ```shell
 cd lynk_up_server
 ```
@@ -90,9 +114,14 @@ cd lynk_up_server
 ```shell
 pip install -r dependencies.txt
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 7. Generate Secret Key
+</summary>
+
 ```shell
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
@@ -103,15 +132,25 @@ python3 -c 'from django.core.management.utils import get_random_secret_key; prin
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
-<br>
+</details>
+
+<details>
+<summary>
 
 ### 8. Run the Migrations
+</summary>
+
 ```shell
 python manage.py migrate
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 9. Load Fixture Data
+</summary>  
+
 ```shell
 python manage.py loaddata lynk_up_server/fixtures/user.json
 ```
@@ -127,16 +166,21 @@ python manage.py loaddata lynk_up_server/fixtures/group.json
 ```shell
 python manage.py loaddata lynk_up_server/fixtures/event.json
 ```
-<br>
+</details>
 
+<details>
+<summary>
+  
 ### 10. Run the Tests
+</summary>
+
 ```shell
 pytest
 ```
 <br>
 
 ### If everything's green, you're good to go!
-<br>
+</details>
 
 -----------------------------
 
