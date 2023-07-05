@@ -347,6 +347,87 @@ Response:
 
 ---
 
+### Update a User
+
+```http
+GET /users/:user_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Requests: <br>
+
+```
+{
+    "user_name": "another_username",
+    "phone_number": "999-999-9999",
+    "full_name": "Different Name"
+}
+```
+
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": {
+        "id": 1,
+        "type": "user",
+        "attributes": {
+            "user_name": "another_username",
+            "phone_number": "999-999-9999",
+            "full_name": "Different Name",
+            "my_events": [
+                {
+                    "id": 1,
+                    "group": 1,
+                    "group_name": "Game Night",
+                    "title": "Space Catan",
+                    "date": "05-20-23",
+                    "time": "8:00 PM"
+                }, etc.
+            ],
+            "invited_to_events": [],
+            "my_groups": [
+                {
+                    "id": 1,
+                    "name": "Game Night",
+                    "member_count": 4
+                }, etc.
+            ],
+            "included_in_groups": []
+        }
+    }
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 400 | `BAD REQUEST` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "BAD REQUES",
+        "status": "400"
+    ]
+}
+```
+
+</details>
+
+---
+
 ### Get an Event
 
 ```http
