@@ -14,10 +14,14 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ------------------------------------------
+## Getting Started 
+
+For a smooth experience with the backend repository, please follow the following instructions in order.
+
 <details>
 <summary> 
 
-## Setup 
+### Setup Instructions
 </summary>
 <br>
 
