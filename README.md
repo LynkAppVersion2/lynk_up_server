@@ -82,7 +82,7 @@ Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.ve
 <details>
 <summary>
   
-### 5. Create Environment for Keys
+> ### 5. Create Environment for Keys
 </summary>
 
 ```shell
@@ -100,7 +100,7 @@ DJANGO_ENV=development
 <details>
 <summary>
   
-### 6. Install Packages
+> ### 6. Install Packages
 </summary>
 
 ```shell
@@ -114,7 +114,7 @@ pip install -r dependencies.txt
 <details>
 <summary>
   
-### 7. Generate Secret Key
+> ### 7. Generate Secret Key
 </summary>
 
 ```shell
@@ -131,7 +131,7 @@ SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 <details>
 <summary>
 
-### 8. Run the Migrations
+> ### 8. Run the Migrations
 </summary>
 
 ```shell
@@ -141,7 +141,7 @@ python manage.py migrate
 <details>
 <summary>
   
-### 9. Load Fixture Data
+> ### 9. Load Fixture Data
 </summary>  
 
 ```shell
@@ -163,7 +163,7 @@ python manage.py loaddata lynk_up_server/fixtures/event.json
 <details>
 <summary>
   
-### 10. Run the Tests
+> ### 10. Run the Tests
 </summary>
 
 ```shell
@@ -171,7 +171,7 @@ pytest
 ```
 <br>
 
-### If everything's green, you're good to go!
+> ### If everything's green, you're good to go!
 </details>
 </details>
 
