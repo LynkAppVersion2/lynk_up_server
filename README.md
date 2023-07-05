@@ -181,7 +181,10 @@ pytest
 ## Endpoints
 
 <details close>
-<summary> All Endpoints </summary>
+<summary> 
+  
+### All Endpoints 
+</summary>
 
 <details>
 <summary>
@@ -1000,11 +1003,9 @@ Response:
 ```
 
 </details>
-</details>
-
-
 
 ---
+</details>
 
 ## Team
 <table>
