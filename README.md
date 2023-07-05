@@ -183,6 +183,13 @@ pytest
 <details close>
 <summary> All Endpoints </summary>
 
+<details>
+<summary>
+  
+### Users
+</summary>
+
+
 ### Get all Users
 
 ```http
@@ -424,6 +431,7 @@ Response:
 }
 ```
 
+</details>
 </details>
 
 ---
