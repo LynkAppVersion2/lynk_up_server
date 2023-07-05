@@ -830,9 +830,15 @@ Response:
 ```
 
 </details>
-</details>
 
 ---
+</details>
+
+<details>
+<summary>
+  
+> ### Events
+</summary>
 
 ### Create Event
 
