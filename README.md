@@ -14,8 +14,9 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ------------------------------------------
-
-## Setup
+<details>
+<summary> ## Setup </summary>
+<br>
 
 ### 1. Fork and Clone the repository
 ```shell
@@ -118,6 +119,7 @@ pytest
 
 ### If everything's green, you're good to go!
 
+<details>
 <br>
 
 -----------------------------
