@@ -183,6 +183,95 @@ pytest
 <details close>
 <summary> All Endpoints </summary>
 
+### Get all Users
+
+```http
+GET /users/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```
+No Parameters
+```
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": [
+        {
+            "id": 1,
+            "type": "user",
+            "attributes": {
+                "user_name": "user123",
+                "phone_number": "555-555-5555",
+                "full_name": "Andra Helton",
+                "my_events": [
+                    {
+                        "id": 1,
+                        "group": 1,
+                        "group_name": "Game Night",
+                        "title": "Space Catan",
+                        "date": "05-20-23",
+                        "time": "8:00 PM"
+                    }, etc.
+                ],
+                "invited_to_events": [],
+                "my_groups": [
+                    {
+                        "id": 1,
+                        "name": "Game Night",
+                        "member_count": 4
+                    }, etc.
+                ],
+                "included_in_groups": []
+            }
+        },
+        {
+            "id": 2,
+            "type": "user",
+            "attributes": {
+                "user_name": "joe123",
+                "phone_number": "555-888-1111",
+                "full_name": "Joe Fogiato",
+                "my_events": [],
+                "invited_to_events": [
+                    {
+                        "id": 1,
+                        "group": 1,
+                        "group_name": "Game Night",
+                        "title": "Space Catan",
+                        "date": "05-20-23",
+                        "time": "8:00 PM"
+                    }, etc.
+                ],
+                "my_groups": [],
+                "included_in_groups": [
+                    {
+                        "id": 1,
+                        "name": "Game Night",
+                        "member_count": 4
+                    }, etc.
+                ]
+            }
+        }, etc.
+    ]
+}
+```
+
+</details>
+
+---
+
 ### Get a User
 
 ```http
@@ -208,25 +297,32 @@ Response:
 
 {
     "data": {
-        "id": "1",
+        "id": 1,
+        "type": "user",
         "attributes": {
-            "user_name": "Tesseract",
-            "phone_number": "888-888-8888",
-            "full_name": "Antonio King Hunt",
-        },
-        "events": [
-            {
-                "id": 1,
-                "group": 1,
-                "group_name": "Best Buds",
-                "title": "Magic Tournament",
-                "date": "05-23-2023",
-                "time": "7:00pm",
-                "address": "123 fun st.",
-                "description": "Fun times with fun people"
-            },
-            {etc}
-        ]
+            "user_name": "user123",
+            "phone_number": "555-555-5555",
+            "full_name": "Andra Helton",
+            "my_events": [
+                {
+                    "id": 1,
+                    "group": 1,
+                    "group_name": "Game Night",
+                    "title": "Space Catan",
+                    "date": "05-20-23",
+                    "time": "8:00 PM"
+                }, etc.
+            ],
+            "invited_to_events": [],
+            "my_groups": [
+                {
+                    "id": 1,
+                    "name": "Game Night",
+                    "member_count": 4
+                }, etc.
+            ],
+            "included_in_groups": []
+        }
     }
 }
 ```
