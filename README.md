@@ -1248,6 +1248,79 @@ Response:
 
 ---
 
+### Update Event
+
+```http
+PATCH /events/:event_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "title": "Root - A medium length game",
+    "date": "08-04-24",
+    "time": "9:00 PM",
+    "address": "321 another address St.",
+    "description": "BYOB - we can also get wings"
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 201 | `Created` |
+
+Response:
+
+```json
+
+{
+    "id": 3,
+    "group": 1,
+    "group_name": "Game Night",
+    "host_id": 1,
+    "host_name": "Andra Helton",
+    "title": "Root - A medium length game",
+    "date": "08-04-24",
+    "time": "9:00 PM",
+    "address": "321 another address St.",
+    "description": "BYOB - we can also get wings",
+    "invited": [
+        {
+            "user_id": 3,
+            "user_name": "joe123",
+            "full_name": "Joe Fogiato",
+            "phone_number": "555-888-1111"
+        }, etc.
+    ]
+}
+```
+
+Errors:
+
+| Code | Description |
+| :--- | :--- |
+| 400 | `BAD REQUEST` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "BAD REQUEST",
+        "status": "400"
+    ]
+}
+```
+
+</details>
+
+---
+
 ### Delete Event
 
 ```http
