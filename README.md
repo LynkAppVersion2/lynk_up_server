@@ -9,10 +9,12 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ## Tech Stack
-<div align="center">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original-wordmark.svg" width="60" height="60"/>
-</div>
-<br>
+
+- Python 3.10.11
+- Django 4.2.1
+- Django REST Framework 3.14.0
+- SQLite3
+- Pytest
 
 ------------------------------------------
 ## Getting Started 
