@@ -5,12 +5,14 @@
 
 ## Introduction
 Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform for creating, discovering, and managing events. From small gatherings and meetings to large parties, this app provides an intuitive and user-friendly platform to manage social circles and meetups. This version of the LynkUp app is redesigned to allow users to fluidly navigate adding and managing friendships, creating friend groups and events, and sending SMS messages to update invitees with event information.
-
+<br>
+<br>
 
 ## Tech Stack
 - **Python:** Our primary programming language offering simplicity and versatility.
 - **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
-
+<br>
+<br>
 
 ## Setup
 
@@ -42,7 +44,11 @@ run . .venv/bin/activate
 
 4. Select Interpreter
 ```shell
-cmd + shift + P → Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
+run cmd + shift + P
+```
+
+```shell
+Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
 <br>
 <br>
