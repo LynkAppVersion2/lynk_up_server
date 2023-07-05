@@ -777,6 +777,16 @@ Errors:
 
 </details>
 
+------------
+
+</details>
+
+<details>
+<summary>
+  
+> ### Events
+</summary>
+
 ### Get an Event
 
 ```http
@@ -835,13 +845,6 @@ Response:
 </details>
 
 ---
-</details>
-
-<details>
-<summary>
-  
-> ### Events
-</summary>
 
 ### Create Event
 
