@@ -24,17 +24,20 @@ In this latest version, users can seamlessly navigate through features like addi
 
 To ensure a seamless experience setting up our backend repository, please adhere to the following instructions in sequential order.
 
-<details>
-<summary> 
 
 ### Setup Instructions
-</summary>
+
 <br>
 
+<details>
+<summary> 
 ### 1. Fork and Clone the repository
+</summary>
+  
 ```shell
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
+</details>
 <br>
 
 ### 2. Navigate to the directory
@@ -132,7 +135,6 @@ pytest
 
 ### If everything's green, you're good to go!
 <br>
-</details>
 
 -----------------------------
 
