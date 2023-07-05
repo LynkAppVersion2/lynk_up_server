@@ -4,60 +4,97 @@
 </div>
 
 ## Introduction
-Welcome to the backend repository of Lynk Up! Lynk Up is a social event management app designed to streamline the organization, attendance, and management of events across different friend groups. This repository houses the codebase for our backend services, intricately crafted using Python and the Django REST framework.
+Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform for creating, discovering, and managing events. From small gatherings and meetings to large parties, this app provides an intuitive and user-friendly platform to manage social circles and meetups. This version of the LynkUp app is redesigned to allow users to fluidly navigate adding and managing friendships, creating friend groups and events, and sending SMS messages to update invitees with event information.
 
----
-## Table of Contents
-- [Introduction](#introduction)
-- [Table of Contents](#table-of-contents)
-- [Directory](#directory)
-- [About](#about)
-- [Tech Stack](#tech-stack)
-- [Key Features](#key-features)
-- [Getting Started](#getting-started)
-- [RESTful Endpoints](#restful-endpoints)
-  - [Get a User](#get-a-user)
-  - [Get an Event](#get-an-event)
-  - [Create Event](#create-event)
-  - [Delete Event](#delete-event)
-  - [Get all Events](#get-all-events)
-  - [Get a Users' Friends](#get-a-users-friends)
-  - [Create Friend](#create-friend)
-  - [Delete Friend](#delete-friend)
-  - [Get all Groups](#get-all-groups)
-  - [Get a Group](#get-a-group)
-  - [Delete Group](#delete-group)
-- [Team](#team)
-- [Contact](#contact)
-- [Contribute](#contribute)
-- [Licensing](#licensing)
----
-
-## Directory
-  [Hosted Website](https://lynk-up-client.vercel.app/dashboard)
-
-  [Hosted Server](https://lynk-up-server.onrender.com/)
-
-  [Client Repository](https://github.com/LYNK-UP-APP/lynk-up-client)
-## About
-Our backend services are at the heart of the Lynk Up app. They manage data, ensure smooth API integrations, provide secure user authentication, enable efficient event management, and prompt notification services. With Python and Django REST framework, we ensure a fast, reliable, and secure environment for our users.
 
 ## Tech Stack
 - **Python:** Our primary programming language offering simplicity and versatility.
 - **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
 
-## Key Features
-1. **Data Management:** Employs Django ORM for seamless database queries and data manipulation.
-2. **API Integrations:** Manages and integrates external APIs to augment app functionality.
-3. **Event Management:** Handles all CRUD operations related to events, enabling the creation, updates, deletions, and RSVP functionalities.
----
-## Getting Started
-1. **Clone the Repository:** Get started with Lynk Up Backend by cloning the repository to your local machine.
-2. **Install Dependencies:** Navigate into the cloned repository and install necessary dependencies.
-3. **Start the Server:** Fire up the Django server.
-Note: Please ensure you have Python and pip installed on your machine before running these commands.
 
+## Setup
+
+1. Fork and Clone the repository
+```shell
+git clone git@github.com:LynkAppVersion2/lynk_up_server.git
+```
+
+2. Navigate to the directory
+```shell
+cd lynk_up_server
+```
+
+3. Create Virtual Environment
+```shell
+run python3 -m venv .venv
+```
+```shell
+run . .venv/bin/activate
+```
+
+4. Select Interpreter
+```shell
+cmd + shift + P → Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
+```
+
+5. Create Environment for Keys
+```shell
+run touch .env
+```
+Put the following keys inside .env file:
+```shell
+DEBUG=True
+DJANGO_ENV=development
+```
+
+6. Install Packages
+```shell
+cd lynk_up_server
+```
+```shell
+run pip install -r dependencies.txt
+```
+
+7. Generate Secret Key
+```shell
+python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+Copy the output
+
+Add the following to the .env file:
+```shell
+SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
+```
+
+8. Run the Migrations
+```shell
+run python manage.py migrate
+```
+
+9. Load Fixture Data
+```shell
+run python manage.py loaddata lynk_up_server/fixtures/user.json
+```
+```shell
+run python manage.py loaddata lynk_up_server/fixtures/friend.json
+```
+```shell
+run python manage.py loaddata lynk_up_server/fixtures/group.json
+```
+```shell
+run python manage.py loaddata lynk_up_server/fixtures/event.json
+```
+
+10. Run the Tests
+```shell
+run pytest
+```
+If everything's green, you're good to go!
+
+<br>
 ---
+
+
 ## RESTful Endpoints
 
 Base url to reach the endpoints listed below:
@@ -742,18 +779,3 @@ Errors:
     </td>
   </tr>
 </table>
-
----
-## Contact
-For any questions or suggestions, please open an issue in this repository.
-
-## Contribute
-We're excited to welcome contributions from everyone, irrespective of their experience level. Your input is crucial in helping us make Lynk Up better. Let's collaborate and build a top-notch social event management app together!
-
-## Licensing
-
-This project is intended to be open source. While a specific license has not been chosen yet, it is our intention to make the code and resources freely available for others to use, modify, and distribute. Until a license is selected, all rights to the code, documentation, and other project resources are reserved. Unauthorized use, distribution, or modification of any part of this project is prohibited.
-
----
-
-Thank you for being part of our community! Together, let's make Lynk Up the best social event management app on the market.
