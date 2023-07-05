@@ -696,6 +696,8 @@ Response:
 
 </details>
 
+----------------------
+
 ### Get a Group
 
 ```http
