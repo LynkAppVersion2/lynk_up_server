@@ -18,77 +18,106 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 ```shell
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
+<br>
+<br>
 
 2. Navigate to the directory
 ```shell
 cd lynk_up_server
 ```
+<br>
+<br>
 
 3. Create Virtual Environment
 ```shell
 run python3 -m venv .venv
 ```
+<br>
 ```shell
 run . .venv/bin/activate
 ```
+<br>
+<br>
 
 4. Select Interpreter
 ```shell
 cmd + shift + P → Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
+<br>
+<br>
 
 5. Create Environment for Keys
 ```shell
 run touch .env
 ```
+<br>
 Put the following keys inside .env file:
 ```shell
 DEBUG=True
 DJANGO_ENV=development
 ```
+<br>
+<br>
 
 6. Install Packages
 ```shell
 cd lynk_up_server
 ```
+<br>
 ```shell
 run pip install -r dependencies.txt
 ```
+<br>
+<br>
 
 7. Generate Secret Key
 ```shell
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
 Copy the output
+<br>
 
 Add the following to the .env file:
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
+<br>
+<br>
 
 8. Run the Migrations
 ```shell
 run python manage.py migrate
 ```
+<br>
+<br>
 
 9. Load Fixture Data
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/user.json
 ```
+<br>
+
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/friend.json
 ```
+<br>
+
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/group.json
 ```
+<br>
+
 ```shell
 run python manage.py loaddata lynk_up_server/fixtures/event.json
 ```
+<br>
+<br>
 
 10. Run the Tests
 ```shell
 run pytest
 ```
+<br>
 If everything's green, you're good to go!
 
 <br>
