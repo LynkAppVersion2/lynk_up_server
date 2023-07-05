@@ -14,10 +14,14 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ------------------------------------------
+## Getting Started 
+
+To ensure a seamless experience setting up our backend repository, please adhere to the following instructions in sequential order.
+
 <details>
 <summary> 
 
-## Setup 
+### Setup Instructions
 </summary>
 <br>
 
@@ -123,7 +127,6 @@ pytest
 ### If everything's green, you're good to go!
 
 </details>
-<br>
 
 -----------------------------
 
