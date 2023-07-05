@@ -4,9 +4,12 @@
 </div>
 
 ## Introduction
-Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform for creating, discovering, and managing events. From small gatherings to large parties, this app provides an intuitive and user-friendly platform to manage social circles and meetups. This version of the LynkUp app is redesigned to allow users to fluidly navigate adding and managing friendships, creating friend groups and events, and sending SMS messages to update invitees with event information.
-<br>
-<br>
+Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform for creating, discovering, and managing events. From small gatherings to large parties, this app provides an intuitive and user-friendly platform to manage social circles and meetups. 
+
+In this latest version, users can seamlessly navigate through features like adding and managing friendships, creating friend groups and events, and even sending SMS updates to invitees with essential event information. The redesigned LynkUp app aims to enhance your social experience and streamline event coordination.
+
+------------------------------------------
+
 
 ## Tech Stack
 
@@ -22,25 +25,38 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 To ensure a seamless experience setting up our backend repository, please adhere to the following instructions in sequential order.
 
 <details>
-<summary> 
-
+<summary>
+  
 ### Setup Instructions
+</summary>
+
+<details>
+<summary> 
+  
+> ### 1. Fork and Clone the repository
 </summary>
 <br>
 
-### 1. Fork and Clone the repository
 ```shell
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
-<br>
+</details>
+<details>
+<summary> 
 
-### 2. Navigate to the directory
+> ### 2. Navigate to the directory
+</summary>
+
 ```shell
 cd lynk_up_server
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 3. Create Virtual Environment
+</summary>
 
-### 3. Create Virtual Environment
 ```shell
 python3 -m venv .venv
 ```
@@ -48,9 +64,13 @@ python3 -m venv .venv
 ```shell
 . .venv/bin/activate
 ```
-<br>
+</details>
+<details>
+<summary> 
 
-### 4. Select Interpreter
+> ### 4. Select Interpreter
+</summary>
+
 ```shell
 cmd + shift + P
 ```
@@ -58,9 +78,13 @@ cmd + shift + P
 ```shell
 Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 5. Create Environment for Keys
+</summary>
 
-### 5. Create Environment for Keys
 ```shell
 touch .env
 ```
@@ -72,9 +96,13 @@ touch .env
 DEBUG=True
 DJANGO_ENV=development
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 6. Install Packages
+</summary>
 
-### 6. Install Packages
 ```shell
 cd lynk_up_server
 ```
@@ -82,9 +110,13 @@ cd lynk_up_server
 ```shell
 pip install -r dependencies.txt
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 7. Generate Secret Key
+</summary>
 
-### 7. Generate Secret Key
 ```shell
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
@@ -95,15 +127,23 @@ python3 -c 'from django.core.management.utils import get_random_secret_key; prin
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
-<br>
+</details>
+<details>
+<summary>
 
-### 8. Run the Migrations
+> ### 8. Run the Migrations
+</summary>
+
 ```shell
 python manage.py migrate
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 9. Load Fixture Data
+</summary>  
 
-### 9. Load Fixture Data
 ```shell
 python manage.py loaddata lynk_up_server/fixtures/user.json
 ```
@@ -119,16 +159,20 @@ python manage.py loaddata lynk_up_server/fixtures/group.json
 ```shell
 python manage.py loaddata lynk_up_server/fixtures/event.json
 ```
-<br>
+</details>
+<details>
+<summary>
+  
+> ### 10. Run the Tests
+</summary>
 
-### 10. Run the Tests
 ```shell
 pytest
 ```
 <br>
 
-### If everything's green, you're good to go!
-<br>
+> ### If everything's green, you're good to go!
+</details>
 </details>
 
 -----------------------------
