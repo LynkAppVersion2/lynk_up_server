@@ -24,8 +24,11 @@ In this latest version, users can seamlessly navigate through features like addi
 
 To ensure a seamless experience setting up our backend repository, please adhere to the following instructions in sequential order.
 
-
+<details>
+<summary>
+  
 ### Setup Instructions
+</summary>
 
 <details>
 <summary> 
@@ -169,6 +172,7 @@ pytest
 <br>
 
 ### If everything's green, you're good to go!
+</details>
 </details>
 -----------------------------
 
