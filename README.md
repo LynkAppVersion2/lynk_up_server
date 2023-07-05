@@ -12,6 +12,7 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 - **Python:** Our primary programming language offering simplicity and versatility.
 - **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
 <br>
+
 ------------------------------------------
 
 ## Setup
