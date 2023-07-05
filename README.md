@@ -27,8 +27,6 @@ To ensure a seamless experience setting up our backend repository, please adhere
 
 ### Setup Instructions
 
-<br>
-
 <details>
 <summary> 
   
@@ -40,7 +38,6 @@ To ensure a seamless experience setting up our backend repository, please adhere
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
 </details>
-
 <details>
 <summary> 
 
@@ -51,7 +48,6 @@ git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 cd lynk_up_server
 ```
 </details>
-
 <details>
 <summary>
   
@@ -66,7 +62,6 @@ python3 -m venv .venv
 . .venv/bin/activate
 ```
 </details>
-
 <details>
 <summary> 
 
@@ -81,7 +76,6 @@ cmd + shift + P
 Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
 </details>
-
 <details>
 <summary>
   
@@ -100,7 +94,6 @@ DEBUG=True
 DJANGO_ENV=development
 ```
 </details>
-
 <details>
 <summary>
   
@@ -115,7 +108,6 @@ cd lynk_up_server
 pip install -r dependencies.txt
 ```
 </details>
-
 <details>
 <summary>
   
@@ -133,7 +125,6 @@ python3 -c 'from django.core.management.utils import get_random_secret_key; prin
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
 </details>
-
 <details>
 <summary>
 
@@ -144,7 +135,6 @@ SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 python manage.py migrate
 ```
 </details>
-
 <details>
 <summary>
   
@@ -167,7 +157,6 @@ python manage.py loaddata lynk_up_server/fixtures/group.json
 python manage.py loaddata lynk_up_server/fixtures/event.json
 ```
 </details>
-
 <details>
 <summary>
   
@@ -181,7 +170,6 @@ pytest
 
 ### If everything's green, you're good to go!
 </details>
-
 -----------------------------
 
 
