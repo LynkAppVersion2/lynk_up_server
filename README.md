@@ -5,94 +5,127 @@
 
 ## Introduction
 Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform for creating, discovering, and managing events. From small gatherings and meetings to large parties, this app provides an intuitive and user-friendly platform to manage social circles and meetups. This version of the LynkUp app is redesigned to allow users to fluidly navigate adding and managing friendships, creating friend groups and events, and sending SMS messages to update invitees with event information.
-
+<br>
+<br>
 
 ## Tech Stack
 - **Python:** Our primary programming language offering simplicity and versatility.
 - **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
+<br>
 
+------------------------------------------
+<details>
+<summary> 
 
-## Setup
+## Setup 
+</summary>
+<br>
 
-1. Fork and Clone the repository
+### 1. Fork and Clone the repository
 ```shell
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
+<br>
 
-2. Navigate to the directory
+### 2. Navigate to the directory
 ```shell
 cd lynk_up_server
 ```
+<br>
 
-3. Create Virtual Environment
+### 3. Create Virtual Environment
 ```shell
-run python3 -m venv .venv
-```
-```shell
-run . .venv/bin/activate
+python3 -m venv .venv
 ```
 
-4. Select Interpreter
 ```shell
-cmd + shift + P → Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
+. .venv/bin/activate
+```
+<br>
+
+### 4. Select Interpreter
+```shell
+cmd + shift + P
 ```
 
-5. Create Environment for Keys
 ```shell
-run touch .env
+Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.venv/bin/python (recommended)
 ```
-Put the following keys inside .env file:
+<br>
+
+### 5. Create Environment for Keys
+```shell
+touch .env
+```
+<br>
+
+> #### Put the following keys inside .env file:
+
 ```shell
 DEBUG=True
 DJANGO_ENV=development
 ```
+<br>
 
-6. Install Packages
+### 6. Install Packages
 ```shell
 cd lynk_up_server
 ```
-```shell
-run pip install -r dependencies.txt
-```
 
-7. Generate Secret Key
+```shell
+pip install -r dependencies.txt
+```
+<br>
+
+### 7. Generate Secret Key
 ```shell
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
-Copy the output
+> #### Copy the output
 
-Add the following to the .env file:
+> #### Add the following to the .env file:
+
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
-
-8. Run the Migrations
-```shell
-run python manage.py migrate
-```
-
-9. Load Fixture Data
-```shell
-run python manage.py loaddata lynk_up_server/fixtures/user.json
-```
-```shell
-run python manage.py loaddata lynk_up_server/fixtures/friend.json
-```
-```shell
-run python manage.py loaddata lynk_up_server/fixtures/group.json
-```
-```shell
-run python manage.py loaddata lynk_up_server/fixtures/event.json
-```
-
-10. Run the Tests
-```shell
-run pytest
-```
-If everything's green, you're good to go!
-
 <br>
----
+
+### 8. Run the Migrations
+```shell
+python manage.py migrate
+```
+<br>
+
+### 9. Load Fixture Data
+```shell
+python manage.py loaddata lynk_up_server/fixtures/user.json
+```
+
+```shell
+python manage.py loaddata lynk_up_server/fixtures/friend.json
+```
+
+```shell
+python manage.py loaddata lynk_up_server/fixtures/group.json
+```
+
+```shell
+python manage.py loaddata lynk_up_server/fixtures/event.json
+```
+<br>
+
+### 10. Run the Tests
+```shell
+pytest
+```
+<br>
+
+### If everything's green, you're good to go!
+
+<details>
+<br>
+
+-----------------------------
 
 
 ## RESTful Endpoints
