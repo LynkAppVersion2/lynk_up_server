@@ -15,7 +15,10 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 
 ------------------------------------------
 <details>
-<summary> ## Setup </summary>
+<summary> 
+
+## Setup 
+</summary>
 <br>
 
 ### 1. Fork and Clone the repository
