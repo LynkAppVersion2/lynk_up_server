@@ -54,8 +54,8 @@ run touch .env
 ```
 <br>
 
-#### Put the following keys inside .env file:
-
+> #### Put the following keys inside .env file:
+>
 ```shell
 DEBUG=True
 DJANGO_ENV=development
