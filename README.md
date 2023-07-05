@@ -1006,6 +1006,7 @@ Response:
 
 ---
 </details>
+</details>
 
 ## Team
 <table>
