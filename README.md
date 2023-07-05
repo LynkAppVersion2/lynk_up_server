@@ -428,6 +428,160 @@ Response:
 
 ---
 
+### Get all Friends for a User
+
+```http
+GET /users/:user_id/friends/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```
+No Parameters
+```
+
+| Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+
+Response:
+
+```json
+
+{
+    "data": {
+        "friends": [
+            {
+                "user_id": 2,
+                "user_name": "otheruser321",
+                "full_name": "Antonio King Hunt",
+                "phone_number": "555-111-5555"
+            },
+            {
+                "user_id": 3,
+                "user_name": "joe123",
+                "full_name": "Joe Fogiato",
+                "phone_number": "555-888-1111"
+            }, etc.
+        ]
+    }
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
+</details>
+
+---
+
+### Create Friend
+
+```http
+POST /users/:user_id/friends/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "friend_id": 1,
+    "user_id": 1
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 201 | `Created` |
+
+Response:
+
+```json
+
+{
+    "data": {
+        "friends": [
+            {
+                "user_name": "Harrison Ryan",
+                "user_id": 1
+            },
+            {
+                "user_name": "Joe Fogiato",
+                "user_id": 3
+            },
+            {
+                "user_name": "Antonio KH",
+                "user_id": 4
+            },
+            {
+                "user_name": "Trevor Fitz",
+                "user_id": 5
+            }
+        ]
+    }
+}
+```
+
+</details>
+
+---
+
+### Delete Friend
+
+```http
+POST /users/:user_id/friends/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "friend_id": 1,
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 204 | `NO CONTENT` |
+
+Response:
+
+```
+No Response
+```
+
+Errors:
+
+| Code | Description |
+| :--- | :--- |
+| 404 | `NOT FOUND` |
+
+</details>
+
+---
+
 ### Get an Event
 
 ```http
@@ -645,156 +799,6 @@ Response:
     ]
 }
 ```
-
-</details>
-
----
-
-### Get a Users' Friends
-
-```http
-GET /users/:user_id/friends/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```
-No Parameters
-```
-
-| Code | Description |
-| :--- | :--- |
-| 200 | `OK` |
-
-Response:
-
-```json
-
-{
-    "data": {
-        "friends": [
-            {
-                "user_id": 1,
-                "user_name": "Joe Fogiato"
-            },
-            {
-                "user_id": 2,
-                "user_name": "Dawson T"
-            }
-        ]
-    }
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 404 | `NOT FOUND` |
-
-Response:
-
-```json
-
-{
-    "error": [
-        "title": "NOT FOUND",
-        "status": "404"
-    ]
-}
-```
-
-</details>
-
----
-
-### Create Friend
-
-```http
-POST /users/:user_id/friends/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```json
-{
-    "friend_id": 1,
-    "user_id": 1
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 201 | `Created` |
-
-Response:
-
-```json
-
-{
-    "data": {
-        "friends": [
-            {
-                "user_name": "Harrison Ryan",
-                "user_id": 1
-            },
-            {
-                "user_name": "Joe Fogiato",
-                "user_id": 3
-            },
-            {
-                "user_name": "Antonio KH",
-                "user_id": 4
-            },
-            {
-                "user_name": "Trevor Fitz",
-                "user_id": 5
-            }
-        ]
-    }
-}
-```
-
-</details>
-
----
-
-### Delete Friend
-
-```http
-POST /users/:user_id/friends/
-```
-
-<details close>
-<summary>  Details </summary>
-<br>
-
-Request: <br>
-```json
-{
-    "friend_id": 1,
-}
-```
-
-| Code | Description |
-| :--- | :--- |
-| 204 | `NO CONTENT` |
-
-Response:
-
-```
-No Response
-```
-
-Errors:
-
-| Code | Description |
-| :--- | :--- |
-| 404 | `NOT FOUND` |
 
 </details>
 
