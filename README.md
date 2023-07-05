@@ -115,7 +115,8 @@ python manage.py loaddata lynk_up_server/fixtures/event.json
 pytest
 ```
 <br>
-#### If everything's green, you're good to go!
+
+### If everything's green, you're good to go!
 
 <br>
 <br>
