@@ -9,9 +9,12 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ## Tech Stack
-- **Python:** Our primary programming language offering simplicity and versatility.
-- **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
-<br>
+
+- Python 3.10.11
+- Django 4.2.1
+- Django REST Framework 3.14.0
+- SQLite3
+- Pytest
 
 ------------------------------------------
 ## Getting Started 
@@ -125,18 +128,13 @@ pytest
 <br>
 
 ### If everything's green, you're good to go!
-
+<br>
 </details>
 
 -----------------------------
 
 
-## RESTful Endpoints
-
-Base url to reach the endpoints listed below:
-```
-https://lynk-up-server.onrender.com
-```
+## Endpoints
 
 <details close>
 <summary> All Endpoints </summary>
