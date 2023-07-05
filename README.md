@@ -31,9 +31,11 @@ To ensure a seamless experience setting up our backend repository, please adhere
 
 <details>
 <summary> 
+  
 ### 1. Fork and Clone the repository
 </summary>
-  
+<br>
+
 ```shell
 git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 ```
