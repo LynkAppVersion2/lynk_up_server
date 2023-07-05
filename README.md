@@ -362,7 +362,7 @@ Response:
 ### Update a User
 
 ```http
-GET /users/:user_id/
+PATCH /users/:user_id/
 ```
 
 <details close>
@@ -371,7 +371,7 @@ GET /users/:user_id/
 
 Requests: <br>
 
-```
+```json
 {
     "user_name": "another_username",
     "phone_number": "999-999-9999",
@@ -432,7 +432,7 @@ Response:
 
 {
     "error": [
-        "title": "BAD REQUES",
+        "title": "BAD REQUEST",
         "status": "400"
     ]
 }
@@ -677,6 +677,18 @@ Errors:
 | :--- | :--- |
 | 404 | `NOT FOUND` |
 
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
 </details>
 
 ---
@@ -836,7 +848,7 @@ GET /groups/
 <br>
 
 Request: <br>
-```
+```json
 {
     "user": 1,
     "name": "Plein Air Painting",
@@ -919,7 +931,7 @@ PATCH /groups/:group_id/
 <br>
 
 Request: <br>
-```
+```json
 {
     "name": "Roller Bladers"
 }
@@ -1008,6 +1020,18 @@ Errors:
 | :--- | :--- |
 | 404 | `NOT FOUND` |
 
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
 </details>
 
 ------------
@@ -1031,7 +1055,7 @@ GET /events/
 <br>
 
 Request: <br>
-```json
+```
 No Parameters
 ```
 
@@ -1254,6 +1278,18 @@ Errors:
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
 
 </details>
 
