@@ -33,6 +33,7 @@ cd lynk_up_server
 run python3 -m venv .venv
 ```
 <br>
+
 ```shell
 run . .venv/bin/activate
 ```
@@ -52,6 +53,7 @@ run touch .env
 ```
 <br>
 Put the following keys inside .env file:
+
 ```shell
 DEBUG=True
 DJANGO_ENV=development
@@ -64,6 +66,7 @@ DJANGO_ENV=development
 cd lynk_up_server
 ```
 <br>
+
 ```shell
 run pip install -r dependencies.txt
 ```
@@ -78,6 +81,7 @@ Copy the output
 <br>
 
 Add the following to the .env file:
+
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 ```
