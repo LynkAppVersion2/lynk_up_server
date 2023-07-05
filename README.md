@@ -362,7 +362,7 @@ Response:
 ### Update a User
 
 ```http
-GET /users/:user_id/
+PATCH /users/:user_id/
 ```
 
 <details close>
@@ -371,7 +371,7 @@ GET /users/:user_id/
 
 Requests: <br>
 
-```
+```json
 {
     "user_name": "another_username",
     "phone_number": "999-999-9999",
@@ -432,7 +432,7 @@ Response:
 
 {
     "error": [
-        "title": "BAD REQUES",
+        "title": "BAD REQUEST",
         "status": "400"
     ]
 }
@@ -677,6 +677,18 @@ Errors:
 | :--- | :--- |
 | 404 | `NOT FOUND` |
 
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
 </details>
 
 ---
@@ -836,7 +848,7 @@ GET /groups/
 <br>
 
 Request: <br>
-```
+```json
 {
     "user": 1,
     "name": "Plein Air Painting",
@@ -919,7 +931,7 @@ PATCH /groups/:group_id/
 <br>
 
 Request: <br>
-```
+```json
 {
     "name": "Roller Bladers"
 }
@@ -1008,6 +1020,18 @@ Errors:
 | :--- | :--- |
 | 404 | `NOT FOUND` |
 
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
+
 </details>
 
 ------------
@@ -1031,7 +1055,7 @@ GET /events/
 <br>
 
 Request: <br>
-```json
+```
 No Parameters
 ```
 
@@ -1224,6 +1248,79 @@ Response:
 
 ---
 
+### Update Event
+
+```http
+PATCH /events/:event_id/
+```
+
+<details close>
+<summary>  Details </summary>
+<br>
+
+Request: <br>
+```json
+{
+    "title": "Root - A medium length game",
+    "date": "08-04-24",
+    "time": "9:00 PM",
+    "address": "321 another address St.",
+    "description": "BYOB - we can also get wings"
+}
+```
+
+| Code | Description |
+| :--- | :--- |
+| 201 | `Created` |
+
+Response:
+
+```json
+
+{
+    "id": 3,
+    "group": 1,
+    "group_name": "Game Night",
+    "host_id": 1,
+    "host_name": "Andra Helton",
+    "title": "Root - A medium length game",
+    "date": "08-04-24",
+    "time": "9:00 PM",
+    "address": "321 another address St.",
+    "description": "BYOB - we can also get wings",
+    "invited": [
+        {
+            "user_id": 3,
+            "user_name": "joe123",
+            "full_name": "Joe Fogiato",
+            "phone_number": "555-888-1111"
+        }, etc.
+    ]
+}
+```
+
+Errors:
+
+| Code | Description |
+| :--- | :--- |
+| 400 | `BAD REQUEST` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "BAD REQUEST",
+        "status": "400"
+    ]
+}
+```
+
+</details>
+
+---
+
 ### Delete Event
 
 ```http
@@ -1254,6 +1351,18 @@ Errors:
 | Code | Description |
 | :--- | :--- |
 | 404 | `NOT FOUND` |
+
+Response:
+
+```json
+
+{
+    "error": [
+        "title": "NOT FOUND",
+        "status": "404"
+    ]
+}
+```
 
 </details>
 
