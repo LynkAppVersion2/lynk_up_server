@@ -30,17 +30,17 @@ cd lynk_up_server
 
 ### 3. Create Virtual Environment
 ```shell
-run python3 -m venv .venv
+python3 -m venv .venv
 ```
 
 ```shell
-run . .venv/bin/activate
+. .venv/bin/activate
 ```
 <br>
 
 ### 4. Select Interpreter
 ```shell
-run cmd + shift + P
+cmd + shift + P
 ```
 
 ```shell
@@ -50,7 +50,7 @@ Python: Select Interpreter → Select Python 3.10.11 (’.venv’: pipenv) ./.ve
 
 ### 5. Create Environment for Keys
 ```shell
-run touch .env
+touch .env
 ```
 <br>
 
@@ -68,7 +68,7 @@ cd lynk_up_server
 ```
 
 ```shell
-run pip install -r dependencies.txt
+pip install -r dependencies.txt
 ```
 <br>
 <br>
@@ -88,31 +88,31 @@ SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
 
 ### 8. Run the Migrations
 ```shell
-run python manage.py migrate
+python manage.py migrate
 ```
 <br>
 
 ### 9. Load Fixture Data
 ```shell
-run python manage.py loaddata lynk_up_server/fixtures/user.json
+python manage.py loaddata lynk_up_server/fixtures/user.json
 ```
 
 ```shell
-run python manage.py loaddata lynk_up_server/fixtures/friend.json
+python manage.py loaddata lynk_up_server/fixtures/friend.json
 ```
 
 ```shell
-run python manage.py loaddata lynk_up_server/fixtures/group.json
+python manage.py loaddata lynk_up_server/fixtures/group.json
 ```
 
 ```shell
-run python manage.py loaddata lynk_up_server/fixtures/event.json
+python manage.py loaddata lynk_up_server/fixtures/event.json
 ```
 <br>
 
 ### 10. Run the Tests
 ```shell
-run pytest
+pytest
 ```
 <br>
 #### If everything's green, you're good to go!
