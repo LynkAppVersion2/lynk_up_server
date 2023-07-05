@@ -71,7 +71,6 @@ cd lynk_up_server
 pip install -r dependencies.txt
 ```
 <br>
-<br>
 
 ### 7. Generate Secret Key
 ```shell
@@ -119,9 +118,9 @@ pytest
 ### If everything's green, you're good to go!
 
 <br>
-<br>
 
 -----------------------------
+
 
 ## RESTful Endpoints
 
