@@ -8,7 +8,8 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 
 In this latest version, users can seamlessly navigate through features like adding and managing friendships, creating friend groups and events, and even sending SMS updates to invitees with essential event information. The redesigned LynkUp app aims to enhance your social experience and streamline event coordination.
 
-<br>
+------------------------------------------
+
 
 ## Tech Stack
 
