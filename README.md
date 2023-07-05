@@ -432,9 +432,10 @@ Response:
 ```
 
 </details>
-</details>
 
 ---
+</details>
+
 
 <details>
 <summary>
@@ -593,9 +594,9 @@ Errors:
 | 404 | `NOT FOUND` |
 
 </details>
-</details>
 
 ---
+</details>
 
 ### Get an Event
 
