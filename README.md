@@ -33,7 +33,7 @@ To ensure a seamless experience setting up our backend repository, please adhere
 <details>
 <summary> 
   
-### 1. Fork and Clone the repository
+> ### 1. Fork and Clone the repository
 </summary>
 <br>
 
@@ -44,7 +44,7 @@ git clone git@github.com:LynkAppVersion2/lynk_up_server.git
 <details>
 <summary> 
 
-### 2. Navigate to the directory
+> ### 2. Navigate to the directory
 </summary>
 
 ```shell
@@ -54,7 +54,7 @@ cd lynk_up_server
 <details>
 <summary>
   
-### 3. Create Virtual Environment
+> ### 3. Create Virtual Environment
 </summary>
 
 ```shell
@@ -68,7 +68,7 @@ python3 -m venv .venv
 <details>
 <summary> 
 
-### 4. Select Interpreter
+> ### 4. Select Interpreter
 </summary>
 
 ```shell
