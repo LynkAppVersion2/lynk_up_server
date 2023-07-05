@@ -134,12 +134,7 @@ pytest
 -----------------------------
 
 
-## RESTful Endpoints
-
-Base url to reach the endpoints listed below:
-```
-https://lynk-up-server.onrender.com
-```
+## Endpoints
 
 <details close>
 <summary> All Endpoints </summary>
