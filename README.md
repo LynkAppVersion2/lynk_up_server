@@ -9,8 +9,9 @@ Welcome to the backend repository of Lynk Up Version 2! Lynk Up is a platform fo
 <br>
 
 ## Tech Stack
-- **Python:** Our primary programming language offering simplicity and versatility.
-- **Django REST Framework:** Used for building APIs, ensuring a scalable and secure connection between our frontend and backend services.
+<div align="center">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original-wordmark.svg" width="60" height="60"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original-wordmark.svg" width="60" height="60"/>
+</div>
 <br>
 
 ------------------------------------------
