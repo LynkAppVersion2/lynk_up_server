@@ -55,7 +55,7 @@ run touch .env
 <br>
 
 > #### Put the following keys inside .env file:
->
+
 ```shell
 DEBUG=True
 DJANGO_ENV=development
@@ -77,9 +77,9 @@ run pip install -r dependencies.txt
 ```shell
 python3 -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
-#### Copy the output
+> #### Copy the output
 
-#### Add the following to the .env file:
+> #### Add the following to the .env file:
 
 ```shell
 SECRET_KEY=<YOUR_GENERATED_KEY_HERE>
