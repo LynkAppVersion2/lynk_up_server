@@ -82,6 +82,56 @@ def group_detail(request, group_id):
   elif request.method == 'DELETE':
     group.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+  
+  
+@api_view(['GET', 'POST', 'DELETE'])
+def group_friends(request, group_id):
+  try:
+      group = Group.objects.get(pk=group_id)
+  except Group.DoesNotExist:
+      return Response(status=status.HTTP_404_NOT_FOUND)
+
+  if request.method == 'GET':
+      friends_data = []
+
+      for friend in group.friends.all():
+          friend_serializer = UserSerializer(friend.friend)
+          friends_data.append(friend_serializer.data)
+
+      return Response({"friends": friends_data})
+
+  elif request.method == 'POST':
+    host = User.objects.get(id=group.user.id)
+    friend_id = request.data.get('user')
+    
+    try:
+        friend = User.objects.get(id=friend_id)
+    except User.DoesNotExist:
+        return Response({"error": "Friend not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if friend in host.all_friends():
+        if friend in group.friends_list():
+            return Response({"error": "Friend is already in the group"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        added_friendship = Friend.objects.filter(user=host, friend=friend).first()
+        accepted_friendship = Friend.objects.filter(user=friend, friend=host).first()
+
+        group.friends.add(added_friendship)
+        group.friends.add(accepted_friendship)
+        return Response({"message": "Friend added to the group"}, status=status.HTTP_201_CREATED)
+    else:
+        return Response({"error": "Friend is not added by the host or friend request not accepted"}, status=status.HTTP_400_BAD_REQUEST)
+    
+  elif request.method == 'DELETE':
+    host = User.objects.get(id=group.user.id)
+    friend_id = request.data.get('user')
+    friend = User.objects.get(id=friend_id)
+    added_friendship = Friend.objects.filter(user=host, friend=friend).first()
+    accepted_friendship = Friend.objects.filter(user=friend, friend=host).first()
+
+    group.friends.remove(added_friendship)
+    group.friends.remove(accepted_friendship)
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST'])
@@ -91,7 +141,7 @@ def event_list(request):
     serializer = EventSerializer(events, many=True)
     return Response({"data": serializer.data})
 
-  if request.method == 'POST':
+  elif request.method == 'POST':
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
       serializer.save()

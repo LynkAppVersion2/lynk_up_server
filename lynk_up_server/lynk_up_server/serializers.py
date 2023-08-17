@@ -9,7 +9,7 @@ class EventSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Event
-    fields = ('id', 'group', 'group_name', 'host_id', 'host_name', 'title', 'date', 'time', 'address', 'description', 'invited')
+    fields = ('id', 'group', 'group_name', 'host_id', 'host_name', 'title', 'date_time', 'address', 'description', 'invited')
   
   def get_group_name(self, obj):
     return obj.group.name
@@ -34,6 +34,7 @@ class FriendsListSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
   def to_representation(self, instance):
+    # import ipdb; ipdb.set_trace()
     return {
       'user_id': instance.id,
       'user_name': instance.user_name,
@@ -58,7 +59,7 @@ class EventsListSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = Event
-    fields = ('id', 'group', 'group_name', 'title', 'date', 'time')
+    fields = ('id', 'group', 'group_name', 'title', 'date_time')
 
   def get_group_name(self, obj):
     return obj.group.name
