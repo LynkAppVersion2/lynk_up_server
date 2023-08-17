@@ -121,6 +121,17 @@ def group_friends(request, group_id):
         return Response({"message": "Friend added to the group"}, status=status.HTTP_201_CREATED)
     else:
         return Response({"error": "Friend is not added by the host or friend request not accepted"}, status=status.HTTP_400_BAD_REQUEST)
+    
+  elif request.method == 'DELETE':
+    host = User.objects.get(id=group.user.id)
+    friend_id = request.data.get('user')
+    friend = User.objects.get(id=friend_id)
+    added_friendship = Friend.objects.filter(user=host, friend=friend).first()
+    accepted_friendship = Friend.objects.filter(user=friend, friend=host).first()
+
+    group.friends.remove(added_friendship)
+    group.friends.remove(accepted_friendship)
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST'])
