@@ -26,6 +26,8 @@ urlpatterns = [
     path('users/<int:user_id>/friends/<int:friend_id>/', views.friend_detail),
     path('groups/', views.group_list),
     path('groups/<int:group_id>/', views.group_detail),
+    path('groups/<int:group_id>/friends/', views.group_friends),
+    
     path('events/', views.event_list),
     path('events/<int:event_id>/', views.event_detail)
 ]
