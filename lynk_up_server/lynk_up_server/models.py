@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class User(models.Model):
   user_name = models.CharField(max_length=20, unique=True, blank=True)
@@ -16,6 +17,14 @@ class User(models.Model):
 
   def accepted_friends(self):
     return [friend.user for friend in Friend.objects.filter(friend=self)]
+  
+  def all_friends(self):
+    added_friends_list = self.added_friends()
+    accepted_friends_list = self.accepted_friends()
+
+    combined_friends_list = added_friends_list + accepted_friends_list
+
+    return combined_friends_list
   
   def my_groups(self):
     return self.groups.all()
@@ -60,8 +69,7 @@ class Group(models.Model):
 class Event(models.Model):
   group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='events')
   title = models.CharField(max_length=40)
-  date = models.CharField(max_length=50)
-  time = models.CharField(max_length=40)
+  date_time = models.DateTimeField(default=timezone.now)
   address = models.CharField(max_length=60)
   description = models.CharField(max_length=200)
 
